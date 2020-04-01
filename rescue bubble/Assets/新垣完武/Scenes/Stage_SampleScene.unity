@@ -7755,7 +7755,6 @@ GameObject:
   - component: {fileID: 1281390478}
   - component: {fileID: 1281390477}
   - component: {fileID: 1281390476}
-  - component: {fileID: 1281390475}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Wall
@@ -7777,18 +7776,6 @@ Transform:
   m_Father: {fileID: 1862801609}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1281390475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114553237871986838, guid: 0aa074c9ab474b54faa42bdc8215208f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1281390473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1281390476
 BoxCollider:
   m_ObjectHideFlags: 0
