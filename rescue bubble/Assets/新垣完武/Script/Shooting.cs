@@ -77,6 +77,7 @@ public class Shooting : MonoBehaviour
                 reload_time_flg = false;
             }
         }
+
     }
 
     
@@ -84,6 +85,11 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
+        if (bullet_Count < 0)   //万が一bullet_Countがマイナスになったときに０に戻す
+        {
+            bullet_Count = 0;
+        }
+
         //  スペースキーが押された時//"Fire1"により右クリックでもおｋ
         if ((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) && reload_time_flg == false)//GetButtonDown//GetKeyDown
         {

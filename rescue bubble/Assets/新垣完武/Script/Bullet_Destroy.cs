@@ -26,32 +26,7 @@ public class Bullet_Destroy : MonoBehaviour {
             script.bullet_Count--;//弾が消えたらカウントを1減らす
          //   script2.bullet_Count--;//弾が消えたらカウントを1減らす
         }
-        //if (GetComponent<SphereCollider>().isTrigger == true)
-        //{
-        //    GetComponent<SphereCollider>().isTrigger = false;
-        //}
-
 	}
-    //void OnCollisionEnter(Collision collision)//他のcollider/rigidbodyに触れたとき
-    //{
-    //    if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "ChargeBullet"
-    //        || collision.gameObject.tag == "Player")//玉が玉に当たったら(チャージ弾も含む)または、玉がプレイヤーに当たったら
-    //    {
-
-    //        GetComponent<SphereCollider>().isTrigger = true;//すり抜けるようにする
-
-    //    }
-    //    if (collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "ChargeBullet"
-    //        && collision.gameObject.tag != "Player")//玉(チャージ弾も含む)が玉とプレイヤー以外に当たったら
-    //    {
-    //        GetComponent<SphereCollider>().isTrigger = false;//ぶつかるようにする
-    //        //Destroy(this.gameObject);
-    //        Destroy(gameObject);
-    //        script.bullet_Count--;//弾が消えたらカウントを1減らす
-    //      //  script2.bullet_Count--;//弾が消えたらカウントを1減らす
-    //    }
-    //}
-
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Wall")
@@ -76,6 +51,11 @@ public class Bullet_Destroy : MonoBehaviour {
             Debug.Log("君は今、動くオブジェクトに攻撃した");//       
         }
 
-        // Destroy(gameObject);
+        var yodame_kakunin = collision.gameObject.GetComponent<hidame>();
+        if (yodame_kakunin != null)//当たった相手のGetComponent情報の<hidame>が使われているならnullじゃない
+        //つまりこの攻撃を食らうことができるオブジェクトである
+        {
+            yodame_kakunin.hidame_01(10);//()の中身はダメージ数を記入する※なぜかダブルヒット扱いで()×２のダメージになっている
+        }
     }
 }
