@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHP : MonoBehaviour {
 
     public int HP;
-    public GameObject Enemy;
+   // public GameObject Enemy;
 
     ////効果音の設定
     AudioSource audioSource;    //オーディオを所得するための変数
