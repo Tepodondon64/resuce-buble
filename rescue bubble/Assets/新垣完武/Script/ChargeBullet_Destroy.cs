@@ -72,6 +72,11 @@ public class ChargeBullet_Destroy : MonoBehaviour {
             Debug.Log("君は今、動くオブジェクトに貫通攻撃した");//       
         }
 
-       // Destroy(gameObject);
+        var yodame_kakunin = collision.gameObject.GetComponent<hidame>();
+        if (yodame_kakunin != null)//当たった相手のGetComponent情報の<hidame>が使われているならnullじゃない
+        //つまりこの攻撃を食らうことができるオブジェクトである
+        {
+            yodame_kakunin.hidame_01(20);//()の中身はダメージ数を記入する※なぜかダブルヒット扱いで()×２のダメージになっている
+        }
     }
 }

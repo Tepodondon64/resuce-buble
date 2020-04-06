@@ -5,21 +5,21 @@ using UnityEngine;
 public class Enemy_Destroy : MonoBehaviour {
 
 
-    GameObject enemy; //オブジェクトを入れる変数名
+    //GameObject enemy; //オブジェクトを入れる変数名
 
-    Broken script; //スプリクトを入れる変数名
+    EnemyStatus script; //スプリクトを入れる変数名
 
 	// Use this for initialization
 	void Start () {
 
-        enemy = GameObject.Find("Enemy"); //
-        script = enemy.GetComponent<Broken>(); 
+        //enemy = GameObject.Find("Enemy"); //
+        script = GetComponent<EnemyStatus>(); 
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (script.enemyhp <= 0)
+        if (script.enemy_hp <= 0)
         {
             Destroy(gameObject);
 

@@ -162,7 +162,7 @@ public class Rotation_Shooting : MonoBehaviour
             bullets2.transform.localPosition = Muzzle2.position;
             // 原点を中心として、(1,1,1)方向に毎秒100度公転する
             Muzzle.transform.RotateAround(PLAYER,  Vector3.right, 300 * Time.deltaTime);
-            Muzzle2.transform.RotateAround(PLAYER, Vector3.up, 200 * Time.deltaTime);
+            Muzzle2.transform.RotateAround(PLAYER, Vector3.up, 300 * Time.deltaTime);
             //if(++TimeCount > EndCount){
             //bullets.GetComponent<Rigidbody>().AddForce(force);
             //}
