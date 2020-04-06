@@ -20,6 +20,14 @@ public class PlayerHP : MonoBehaviour {
         player =this.gameObject.GetComponent<Transform>(); //playerのTransformを取得
     }
 
+    void Update()
+    {
+        if ((/*Input.GetButtonDown("Fire3") ||*/ Input.GetKeyDown(KeyCode.G)))//キーボードのGキーを押すと時間を操れる
+        {
+            Invoke("GoToGameOver", 1.5f);
+        }
+    }
+
     void OnCollisionEnter(Collision other)
     {
         //もしもぶつかった相手のTagが"Enemy"であったならば（条件） 
@@ -41,6 +49,7 @@ public class PlayerHP : MonoBehaviour {
 
     void GoToGameOver()
     {
-        SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("GameOver");
+        
     }
 }

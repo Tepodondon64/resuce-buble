@@ -24,6 +24,7 @@ public class EnemyHpBarCtrl : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("StartOK");
         //敵のHPの値を参照するための儀式です
         //EnemyStatus(敵のステータス管理用に作ったスクリプトです)
         //tranform.root　これをやるとヒエラルキー上での親子かんでやりとりができるらしいです
@@ -40,6 +41,7 @@ public class EnemyHpBarCtrl : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log("UpdateOK");
         //　カメラと同じ向きに設定
         transform.rotation = Camera.main.transform.rotation;//EnemyCanvas(HPゲージ)をMain Cameraに向かせる
         hpslider.value = enemystatus.enemy_hp;//現在のHPゲージを描画する。
