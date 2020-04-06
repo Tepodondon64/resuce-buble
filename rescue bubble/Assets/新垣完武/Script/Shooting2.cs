@@ -90,7 +90,8 @@ public class Shooting2 : MonoBehaviour {
 
                 //(弾丸の複製上方向の前、右、左
                 GameObject UP_C_bullets = Instantiate(bullet) as GameObject;
-
+                GameObject UP_R_bullets = Instantiate(bullet) as GameObject;
+                GameObject UP_L_bullets = Instantiate(bullet) as GameObject;
 
 
                 //弾丸の複製　前、右、左
@@ -106,8 +107,10 @@ public class Shooting2 : MonoBehaviour {
                 //上
                 Vector3 UP_C_force;//上前
                 UP_C_force = (this.gameObject.transform.up + this.gameObject.transform.forward).normalized * tama_speed;//上前
-
-
+                Vector3 UP_R_force;//右前
+                UP_R_force = (this.gameObject.transform.up + this.gameObject.transform.forward + this.gameObject.transform.right).normalized * tama_speed;//右前
+                Vector3 UP_L_force;//左前
+                UP_L_force = (this.gameObject.transform.up + this.gameObject.transform.forward - this.gameObject.transform.right).normalized * tama_speed;//上前
 
                 //中
                 Vector3 C_force;//前
@@ -124,20 +127,25 @@ public class Shooting2 : MonoBehaviour {
                 
 
                 // 正面の上方向
+                UP_C_bullets.GetComponent<Rigidbody>().AddForce(UP_C_force);// Rigidbodyに力を加えて発射  上前方向
+                UP_C_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
 
-                UP_C_bullets.GetComponent<Rigidbody>().AddForce(UP_C_force);// Rigidbodyに力を加えて発射  前方向
-                UP_C_bullets.transform.localPosition = Muzzle.position;// 弾丸の位置
+                UP_R_bullets.GetComponent<Rigidbody>().AddForce(UP_R_force);// Rigidbodyに力を加えて発射  上右方向
+                UP_R_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
+
+                UP_L_bullets.GetComponent<Rigidbody>().AddForce(UP_L_force);// Rigidbodyに力を加えて発射  上左方向
+                UP_L_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
 
 
                 // 正面の水平方向
                 C_bullets.GetComponent<Rigidbody>().AddForce(C_force);// Rigidbodyに力を加えて発射  前方向
-                C_bullets.transform.localPosition = Muzzle.position;// 弾丸の位置
+                C_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
 
                 R_bullets.GetComponent<Rigidbody>().AddForce(R_force);// Rigidbodyに力を加えて発射  右方向
-                R_bullets.transform.localPosition = Muzzle.position;// 弾丸の位置
+                R_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
 
                 L_bullets.GetComponent<Rigidbody>().AddForce(L_force);// Rigidbodyに力を加えて発射  左方向
-                L_bullets.transform.localPosition = Muzzle.position;// 弾丸の位置
+                L_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
 
             }
         }
