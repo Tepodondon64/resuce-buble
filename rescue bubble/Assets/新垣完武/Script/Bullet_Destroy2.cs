@@ -13,7 +13,7 @@ public class Bullet_Destroy2 : MonoBehaviour {
     {
         player = GameObject.Find("Player"); //プレイヤーの中に入っている、
         script = player.GetComponent<Shooting2>();//Shooting2スクリプトを読み込む。
-       // script.bullet_Count++;//弾が出たらカウントを1追加する
+        script.bullet_Count++;//弾が出たらカウントを1追加する
     }
 
     // Update is called once per frame
@@ -25,8 +25,7 @@ public class Bullet_Destroy2 : MonoBehaviour {
         {
             losttime = 0;
             Destroy(gameObject, losttime);
-            //script.bullet_Count--;//弾が消えたらカウントを1減らす
-            //   script2.bullet_Count--;//弾が消えたらカウントを1減らす
+            script.bullet_Count--;//弾が消えたらカウントを1減らす
         }
     }
     void OnTriggerEnter(Collider collision)
@@ -34,14 +33,14 @@ public class Bullet_Destroy2 : MonoBehaviour {
         if (collision.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
-           // script.bullet_Count--;//弾が消えたらカウントを1減らす
+            script.bullet_Count--;//弾が消えたらカウントを1減らす
             Debug.Log("君は今、壁に攻撃した");//
         }
 
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
-          //  script.bullet_Count--;//弾が消えたらカウントを1減らす
+            script.bullet_Count--;//弾が消えたらカウントを1減らす
             //script.SP_power = 4;
             Debug.Log("君は今、敵に攻撃した");//
         }
@@ -49,10 +48,14 @@ public class Bullet_Destroy2 : MonoBehaviour {
         if (collision.gameObject.tag == "move obj")
         {
             Destroy(gameObject);
-           // script.bullet_Count--;//弾が消えたらカウントを1減らす
+            script.bullet_Count--;//弾が消えたらカウントを1減らす
             Debug.Log("君は今、動くオブジェクトに攻撃した");//       
         }
-
-        // Destroy(gameObject);
+        var yodame_kakunin = collision.gameObject.GetComponent<hidame>();
+        if (yodame_kakunin != null)//当たった相手のGetComponent情報の<hidame>が使われているならnullじゃない
+        //つまりこの攻撃を食らうことができるオブジェクトである
+        {
+            yodame_kakunin.hidame_01(10);//()の中身はダメージ数を記入する※なぜかダブルヒット扱いで()×２のダメージになっている
+        }
     }
 }
