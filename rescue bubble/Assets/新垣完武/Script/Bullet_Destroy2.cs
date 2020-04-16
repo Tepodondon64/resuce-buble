@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet_Destroy2 : MonoBehaviour {
-    private float losttime = 60;//出現して1秒後に消える
+    private float losttime = 60 + 15 ;//出現して1.25秒後に消える
     //[SerializeField] private GameObject player; //オブジェクトを入れる変数名
     private GameObject player; //オブジェクトを入れる変数名
 
@@ -34,7 +34,7 @@ public class Bullet_Destroy2 : MonoBehaviour {
         {
             Destroy(gameObject);
             script.bullet_Count--;//弾が消えたらカウントを1減らす
-            Debug.Log("君は今、壁に攻撃した");//
+           // Debug.Log("君は今、壁に攻撃した");//
         }
 
         if (collision.gameObject.tag == "Enemy")
@@ -42,20 +42,20 @@ public class Bullet_Destroy2 : MonoBehaviour {
             Destroy(gameObject);
             script.bullet_Count--;//弾が消えたらカウントを1減らす
             //script.SP_power = 4;
-            Debug.Log("君は今、敵に攻撃した");//
+           // Debug.Log("君は今、敵に攻撃した");//
         }
 
         if (collision.gameObject.tag == "move obj")
         {
             Destroy(gameObject);
             script.bullet_Count--;//弾が消えたらカウントを1減らす
-            Debug.Log("君は今、動くオブジェクトに攻撃した");//       
+          //  Debug.Log("君は今、動くオブジェクトに攻撃した");//       
         }
         var yodame_kakunin = collision.gameObject.GetComponent<hidame>();
         if (yodame_kakunin != null)//当たった相手のGetComponent情報の<hidame>が使われているならnullじゃない
         //つまりこの攻撃を食らうことができるオブジェクトである
         {
-            yodame_kakunin.hidame_01(10);//()の中身はダメージ数を記入する※なぜかダブルヒット扱いで()×２のダメージになっている
+            yodame_kakunin.hidame_01(10);//()の中身はダメージ数を記入する
         }
     }
 }

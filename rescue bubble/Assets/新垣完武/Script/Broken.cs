@@ -6,7 +6,7 @@ public class Broken : MonoBehaviour
     public float enemyhp = 10;
 
     private float bullet_power = 1;//通常弾の攻撃力
-    private float chargebullet_power = 4;//チャージショットの攻撃力
+    private float chargebullet_power = 6;//チャージショットの攻撃力
 
     public float SP_power = 0;//
     int count = 0;
@@ -20,7 +20,7 @@ public class Broken : MonoBehaviour
     void OnTriggerEnter(Collider other)//当たった瞬間 isTriggerあり
     {
         //Debug.Log(enemyhp);//
-        Debug.Log(other.gameObject.tag);//弾タグ確認する用
+       // Debug.Log(other.gameObject.tag);//弾タグ確認する用
 
         if (other.gameObject.tag == "Bullet")//通常弾に当たったとき
         {
