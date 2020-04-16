@@ -15,7 +15,7 @@ public class ChargeBullet_Destroy : MonoBehaviour {
     private const float avaoid_time = 1f;  //すり抜ける時間
     private float avoid_time;  //すり抜ける時間
 
-    Broken script;//スプリクトを入れる変数名
+    //Broken script;//スプリクトを入れる変数名
 
     // Use this for initialization
     void Start()
@@ -58,25 +58,25 @@ public class ChargeBullet_Destroy : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Wall")
         {
-            Debug.Log("君は今、壁に貫通攻撃した");//
+           // Debug.Log("君は今、壁に貫通攻撃した");//
         }
 
         if (collision.gameObject.tag == "Enemy")
         {
             //script.SP_power = 4;
-            Debug.Log("君は今、敵に貫通攻撃した");//
+           // Debug.Log("君は今、敵に貫通攻撃した");//
         }
 
         if (collision.gameObject.tag == "move obj")
         {
-            Debug.Log("君は今、動くオブジェクトに貫通攻撃した");//       
+          //  Debug.Log("君は今、動くオブジェクトに貫通攻撃した");//       
         }
 
         var yodame_kakunin = collision.gameObject.GetComponent<hidame>();
         if (yodame_kakunin != null)//当たった相手のGetComponent情報の<hidame>が使われているならnullじゃない
         //つまりこの攻撃を食らうことができるオブジェクトである
         {
-            yodame_kakunin.hidame_01(20);//()の中身はダメージ数を記入する※なぜかダブルヒット扱いで()×２のダメージになっている
+            yodame_kakunin.hidame_01(60);//()の中身はダメージ数を記入する
         }
     }
 }

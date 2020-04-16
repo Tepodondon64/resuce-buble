@@ -32,7 +32,7 @@ public class Shooting2 : MonoBehaviour {
 
 
     //一度に存在できる通常弾の数とそのカウントするための変数
-    private int bullet_Max = 4 * 3;//ゲーム内に弾(泡)は5つまで存在できる　弾は一度に３発発射されるのでカウントが×３倍に設定する
+    private int bullet_Max = 3 * 3;//ゲーム内に弾(泡)は3つまで存在できる　弾は一度に３発発射されるのでカウントが×３倍に設定する
     public int bullet_Count = 0;//Bullet_Destroyのスクリプトとつながってますよ
 
     //効果音の設定

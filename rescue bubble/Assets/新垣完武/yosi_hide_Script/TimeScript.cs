@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class TimeScript : MonoBehaviour {
 
-    private float time = 60;
+    private float time = 120;
     private bool stoptime_flg;//時間を止める
 
 	void Start () {
 
-        //初期値60を表示
+        //timeの初期値120を表示
         //float型からint型へCastし、String型に変換して表示
         GetComponent<Text>().text = ((int)time).ToString();
 
