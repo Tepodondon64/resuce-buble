@@ -46,6 +46,8 @@ public class Shooting2 : MonoBehaviour {
    public GameObject Rtarget;   //右側のターゲットを入れる
 
 
+   public bool Stopflg; //ノックバック中にtrueになる
+
     //Use this for initialization
     void Start()
     {
@@ -63,6 +65,8 @@ public class Shooting2 : MonoBehaviour {
         charge_time_flg = false;
         charge_time = charge_time * 60;//フレームでは無く、秒数になる
         Charge_Time = charge_time;//初期化用に格納する。
+
+        Stopflg = false;//falseのときは特になにもないが、trueになるとボタン操作を受付なくなる
     }
 
     //Update is called once per frame
@@ -101,7 +105,7 @@ public class Shooting2 : MonoBehaviour {
             bullet_Count = 0;
         }
         //  スペースキーが押された時//"Fire1"により右クリックでもおｋ
-        if ((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) && reload_time_flg == false)//GetButtonDown//GetKeyDown
+        if ((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) && reload_time_flg == false && Stopflg == false)//GetButtonDown//GetKeyDown
         {
             if (bullet_Count < bullet_Max)
             {
@@ -182,7 +186,7 @@ public class Shooting2 : MonoBehaviour {
 ///////////ここからチャージショット/////////
 
         //  スペースキーが押され続けた時(チャージスタート)
-        if ((Input.GetButton("Fire1") || Input.GetKey(KeyCode.Space)) && reload_time_flg == false)
+        if ((Input.GetButton("Fire1") || Input.GetKey(KeyCode.Space)) && reload_time_flg == false && Stopflg == false)
         {
             charge_time -= 1;
             if (charge_time <= 0)
@@ -196,7 +200,7 @@ public class Shooting2 : MonoBehaviour {
         }
 
         ///スペースキーが押され続けて離された時(チャージ失敗時)
-        if ((Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.Space)) && charge_time_flg == false)
+        if ((Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.Space)) && charge_time_flg == false && Stopflg == false)
         {
             if (charge_time <= Charge_Time / 2)//チャージショットに必要な時間の半分を過ぎた場合に発動
             {
@@ -230,7 +234,7 @@ public class Shooting2 : MonoBehaviour {
         }
 
         ///スペースキーが押され続けて離された時(チャージ成功時)
-        if ((Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.Space)) && charge_time_flg == true)
+        if ((Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.Space)) && charge_time_flg == true && Stopflg == false)
         {
             ChargeObject.SetActive(false);//子オブジェクトを非表示にして無理やりパーティクルを消すぜ
             reload_time_flg = true;    //玉が発射されたら起動する

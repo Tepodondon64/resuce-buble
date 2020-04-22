@@ -17,6 +17,9 @@ public class PlayerContoller_7 : MonoBehaviour {
 
     private bool MukiDebug_flg = false; //傾きのデバッグ文字を表示するのか？(false:非表示    true:表示)
 
+    //他のスクリプトでいじれるやつ
+    public bool Stopflg; //ノックバック中にtrueになる
+
     ////効果音の設定
     //AudioSource audioSource;    //オーディオを所得するための変数
     //public AudioClip MoveSE;         //移動した時のSE
@@ -31,10 +34,18 @@ public class PlayerContoller_7 : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         //tf = GetComponent<Transform>();
         transform.localRotation = Quaternion.Euler(0f, 0f, 0f);//画像の傾き
+        Stopflg = false;//falseのときは特になにもないが、trueになるとボタン操作を受付なくなる
     }
 
     // Update is called once per frame
     void Update()
+    {
+        //if (Stopflg == false)
+        //{
+           KeyMove();
+        //}
+    }
+    void KeyMove()
     {
         Muki();
         //左右キー入力されたら行動する
@@ -46,20 +57,20 @@ public class PlayerContoller_7 : MonoBehaviour {
         float zSpeed = 0.0f;
 
 
-        if (horizontalKey > 0 )//右
+        if (horizontalKey > 0 && Stopflg == false)//右
         {
             //動いた時に動くSEを鳴らす
-           // audioSource.PlayOneShot(MoveSE);
+            // audioSource.PlayOneShot(MoveSE);
             horizontalKeyflg = 1;//右判定
             xSpeed = speedX;
         }
-       
 
-  
-        else if (horizontalKey < 0)//左
+
+
+        else if (horizontalKey < 0 && Stopflg == false)//左
         {
             //動いた時に動くSEを鳴らす
-          //  audioSource.PlayOneShot(MoveSE);
+            //  audioSource.PlayOneShot(MoveSE);
             horizontalKeyflg = -1;//左判定     
             xSpeed = -speedX;
         }
@@ -72,19 +83,19 @@ public class PlayerContoller_7 : MonoBehaviour {
             xSpeed = 0.0f;
         }
 
-        
-        if (verticalKey > 0)//上
+
+        if (verticalKey > 0 && Stopflg == false)//上
         {
             //動いた時に動くSEを鳴らす
-           // audioSource.PlayOneShot(MoveSE);
+            // audioSource.PlayOneShot(MoveSE);
             verticalKeyflg = 1;//上(前方向)
             //  anim.SetBool("run", true);
             zSpeed = speedZ;
         }
-        else if (verticalKey < 0)//下
+        else if (verticalKey < 0 && Stopflg == false)//下
         {
             //動いた時に動くSEを鳴らす
-           // audioSource.PlayOneShot(MoveSE);
+            // audioSource.PlayOneShot(MoveSE);
             verticalKeyflg = -1;//下(後ろ方向)
             //  anim.SetBool("run", true);
             zSpeed = -speedZ;
@@ -98,10 +109,6 @@ public class PlayerContoller_7 : MonoBehaviour {
 
         rb.velocity = new Vector3(xSpeed, rb.velocity.y, zSpeed);
     }
-    //void Sayuu()
-    //{}
-    //void Jouge()
-    //{}
 
     void Muki()
     {
