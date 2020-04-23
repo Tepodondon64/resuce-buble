@@ -55,7 +55,7 @@ public class Destroy : MonoBehaviour {
         // 座標を取得
         Vector3 pos = myTransform.position;
 
-        this.transform.localScale = new Vector3(-2 + enemyhp, 1+(enemyhp / 10), -2 + enemyhp);
+        this.transform.localScale = new Vector3(3 + (enemyhp/2), 1+(enemyhp / 10), 3 + (enemyhp/2));
 
         if (enemyhp <= 0)
         {
