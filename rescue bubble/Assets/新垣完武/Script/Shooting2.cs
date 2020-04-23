@@ -51,7 +51,7 @@ public class Shooting2 : MonoBehaviour {
     //Use this for initialization
     void Start()
     {
-        ChargeObject = transform.Find("ChargeParticle").gameObject;//子オブジェクトのパーティクルを入れる
+        ChargeObject = transform.Find("charge_effects").gameObject;//子オブジェクトのパーティクルを入れる
         ChargeObject.SetActive(false);//子オブジェクトを非表示にして無理やりパーティクルを消すぜ
 
         //Componentを取得
