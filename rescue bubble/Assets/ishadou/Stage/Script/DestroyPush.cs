@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Destroy : MonoBehaviour {
+public class DestroyPush : MonoBehaviour
+{
 
     public float enemyhp = 10;
+    public GameObject Push;
 
     private float bullet_power = 1;//通常弾の攻撃力
     private float chargebullet_power = 10;//チャージショットの攻撃力
@@ -55,11 +58,12 @@ public class Destroy : MonoBehaviour {
         // 座標を取得
         Vector3 pos = myTransform.position;
 
-        this.transform.localScale = new Vector3(3 + (enemyhp/2), 1+(enemyhp / 10), 3 + (enemyhp/2));
+        this.transform.localScale = new Vector3(3 + (enemyhp / 2), 1 + (enemyhp / 10), 3 + (enemyhp / 2));
 
         if (enemyhp <= 0)
         {
             Destroy(this.gameObject);
+            Destroy(Push);
         }
 
     }
