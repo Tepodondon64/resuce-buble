@@ -25,6 +25,10 @@ GameObject:
   - component: {fileID: 195535540566113444}
   - component: {fileID: 114757698389844580}
   - component: {fileID: 54765916425161390}
+  - component: {fileID: 114994208973488226}
+  - component: {fileID: 114837006746710428}
+  - component: {fileID: 114520341655013368}
+  - component: {fileID: 114798843490686832}
   m_Layer: 0
   m_Name: TossinEnemy
   m_TagString: Enemy
@@ -40,7 +44,7 @@ Transform:
   m_GameObject: {fileID: 1842155523914056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.554968, y: 1.1, z: -4.4729958}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.3, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,7 +104,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!65 &65053959570544396
 BoxCollider:
@@ -114,6 +118,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0, y: 0, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114520341655013368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842155523914056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760d1552ea5f25a4cb1a602179bc115f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy_hp: 100
 --- !u!114 &114757698389844580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,6 +142,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1842155523914056}
+--- !u!114 &114798843490686832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842155523914056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5544f71c52649b042a8338f0400a623d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114837006746710428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842155523914056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802ebebeed1c139429ec5fe9d7c41e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114994208973488226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842155523914056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54d9333f1d7e264692c614c80fd2106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  span: 1
+  span2: 2
+  material: {fileID: 2100000, guid: 1ada0d3f243ae7c43ad7258b16d8d10f, type: 2}
 --- !u!195 &195535540566113444
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -134,7 +186,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1842155523914056}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

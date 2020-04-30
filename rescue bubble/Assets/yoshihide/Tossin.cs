@@ -13,31 +13,49 @@ public class Tossin : MonoBehaviour
     GameObject Player;
     private float targetTime = 2.0f;
     private float currentTime = 0;
-    
+    //public Material material;
+
     public GameObject Enemy;
-    float speed = 2.0f;
+    float speed = 1.0f;
     private Vector3 vec;
 
     void Start()
     {
          Player = GameObject.Find("Player");
-        
-    //    Vector3 playerpos = this.Player.transform.position;
-    //    Rigidbody rb = GetComponent<Rigidbody>();
-    //    rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+
+        //gameObject.GetComponent<Renderer>().material = this.material;
+        //Vector3 playerpos = this.Player.transform.position;
+        //Rigidbody rb = GetComponent<Rigidbody>();
+        //rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
     }
 
     void Update()
     {
+       
         currentTime += Time.deltaTime;
         if (targetTime < currentTime)
         {
-            currentTime = 0;
+            //Rigidbody取得
+            Rigidbody rb = this.GetComponent<Rigidbody>();
+
+            //Vector3 vec = Player.transform.position;
+            //rb.AddForce(vec);
+            
+            //現在の速度をログに表示
+            Debug.Log(rb.velocity.magnitude);
+
+            this.GetComponent<Renderer>().material.color = Color.white;
+
+            //プレイヤーの方を向く
+            this.transform.LookAt(Player.transform);
+
             //敵の座標を変数posに保存
             var pos = this.gameObject.transform.position;
 
             //敵の位置をプレイヤーの位置にする
-            //this.transform.position = pos;
+            this.transform.position = pos;
+
+            currentTime = 0;
 
             //敵からプレイヤーに向かうベクトルをつくる
             //プレイヤーの位置から敵の位置（弾の位置）を引く
@@ -55,6 +73,7 @@ public class Tossin : MonoBehaviour
 
             //tmpE = hogeEne.transform.position;                                  //プレイヤーの位置情報をvector3でtmpに格納
             //this.transform.position = t;
+
         }
 
 
