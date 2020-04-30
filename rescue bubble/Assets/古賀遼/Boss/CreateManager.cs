@@ -14,18 +14,23 @@ public class CreateManager : MonoBehaviour
     // 初期化
     void Start()
     {
+
         target = GameObject.Find("Player").transform;
+        //Vector3 MSPO = GameObject.Find("MS").transform.position;
         StartCoroutine ("ChangeColor1");
     }
 
     IEnumerator ChangeColor1()
     {
+        yield return new WaitForSeconds(2);
+
         // プレハブを元にオブジェクトを生成する
         GameObject obj = (GameObject)Resources.Load("Flameradiation");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(-5.18f, 45.5f, -4f), Quaternion.identity);
+        GameObject instance = (GameObject)Instantiate(obj,new Vector3(-6.36f, 9.01f, -4f), Quaternion.identity);
+
 
         //5秒停止
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
         //もう一つのコルーチンを実行する
         StartCoroutine("ChangeColor2");
@@ -38,7 +43,7 @@ public class CreateManager : MonoBehaviour
         Invoke("Call", 1f);
 
         //10秒停止
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
 
         //もう一つのコルーチンを実行する
         StartCoroutine("ChangeColor1");
@@ -108,30 +113,30 @@ public class CreateManager : MonoBehaviour
     void FB1()
     {
         GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(20.0f, 66.0f, 10.0f), Quaternion.identity);
+        GameObject instance = (GameObject)Instantiate(obj, new Vector3(20.0f, 30.0f, -11.3f), Quaternion.identity);
     }
     void FB2()
     {
         GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(10.0f, 66.0f, 10.0f), Quaternion.identity);
+        GameObject instance = (GameObject)Instantiate(obj, new Vector3(10.0f, 30.0f, -11.3f), Quaternion.identity);
     }
 
     void FB3()
     {
         GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(0.0f, 66.0f, 10.0f), Quaternion.identity);
+        GameObject instance = (GameObject)Instantiate(obj, new Vector3(0.0f, 30.0f, -11.3f), Quaternion.identity);
     }
 
     void FB4()
     {
         GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(-10.0f, 66.0f, 10.0f), Quaternion.identity);
+        GameObject instance = (GameObject)Instantiate(obj, new Vector3(-10.0f, 30.0f, -11.3f), Quaternion.identity);
     }
 
     void FB5()
     {
         GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(-20.0f, 66.0f, 10.0f), Quaternion.identity);
+        GameObject instance = (GameObject)Instantiate(obj, new Vector3(-20.0f, 30.0f, -11.3f), Quaternion.identity);
         //witch = false;
     }
 
@@ -158,7 +163,7 @@ public class CreateManager : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Untagged")
         {
             Debug.Log("Hit"); // ログを表示する
             BOSSHP--;
