@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet_Destroy2 : MonoBehaviour {
-    private float losttime = 60 + 15 ;//出現して1.25秒後に消える
+    private float losttime = 60 ;//出現して1秒後に消える
     //[SerializeField] private GameObject player; //オブジェクトを入れる変数名
     private GameObject player; //オブジェクトを入れる変数名
 
