@@ -24,9 +24,12 @@ public class CreateManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
+        //// プレハブを元にオブジェクトを生成する 火炎放射
+        //GameObject obj = (GameObject)Resources.Load("Flameradiation");
+        //GameObject instance = (GameObject)Instantiate(obj,new Vector3(-6.36f, 9.01f, -4f), Quaternion.identity);
+
         // プレハブを元にオブジェクトを生成する
-        GameObject obj = (GameObject)Resources.Load("Flameradiation");
-        GameObject instance = (GameObject)Instantiate(obj,new Vector3(-6.36f, 9.01f, -4f), Quaternion.identity);
+        Invoke("Call", 1f);
 
 
         //5秒停止

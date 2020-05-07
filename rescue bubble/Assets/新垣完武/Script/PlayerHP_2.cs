@@ -27,14 +27,14 @@ public class PlayerHP_2 : MonoBehaviour {
 
 
     //スクリプトの取得//
-    //Shooting2 shooting2;
-  //  PlayerContoller_8 playerContoller_8;
+    Shooting2 shooting2;
+    PlayerContoller_8 playerContoller_8;
 
     void Start()
     {
         //外部のスクリプトの情報を取得
-      //  shooting2 = GetComponent<Shooting2>();//Shooting2スクリプトの取得
-      //  playerContoller_8 = GetComponent<PlayerContoller_8>();//PlayerContoller_7スクリプトの取得
+        shooting2 = GetComponent<Shooting2>();//Shooting2スクリプトの取得
+        playerContoller_8 = GetComponent<PlayerContoller_8>();//PlayerContoller_7スクリプトの取得
 
         //Componentを取得
         audioSource = GetComponent<AudioSource>();//AudioのComponentを取得
@@ -112,17 +112,17 @@ public class PlayerHP_2 : MonoBehaviour {
         }
         ///////敵に当たったら反応する奴↓↓
 
-        //if (shooting2.Stopflg == true)
-        //{
-        //    //ExitStopShootを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
-        //    Invoke("ExitStopShoot", 0.6f);
-        //}
+        if (shooting2.Stopflg == true)
+        {
+            //ExitStopShootを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
+            Invoke("ExitStopShoot", 0.6f);
+        }
 
-        //if (playerContoller_8.Stopflg == true)
-        //{
-        //    //ExitStopMoveを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
-        //    Invoke("ExitStopMove", 0.6f);
-        //}
+        if (playerContoller_8.Stopflg == true)
+        {
+            //ExitStopMoveを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
+            Invoke("ExitStopMove", 0.6f);
+        }
 
     }
 
@@ -176,30 +176,32 @@ public class PlayerHP_2 : MonoBehaviour {
             //HPを１ずつ減少させる
             HP -= 1;
         }
+
     }
+
+    void OnTriggerEnter(Collider t)//FB
+    {
+        //もしもぶつかったFBのTagが"FB"であったならば（条件）
+        if (t.gameObject.tag == "FB")
+        {
+            OnDamageEffect();//この関数に移動
+            Invincibleflg = true;//無敵時間になるフラグオン
+
+            //ダメージを受けた時にSEを鳴らす
+            audioSource.PlayOneShot(DamageSE);
+            //HPを1ずつ減少させる
+            HP -= 1;
+        }
+
+    }
+
 
 
     void OnDamageEffect()   //ダメージエフェクト関係
     {
-      //  shooting2.Stopflg = true;   //泡の発射を止める
-       // playerContoller_8.Stopflg = true;   //プレイヤーの動きを止める
-        // PlayerMr.material.color = PlayerMr.material.color - new Color32(0, 0, 0, 100);
-
-//        if (knock_back == true)//後ろ側が壁だったら
-//        {
-//            iTween.MoveTo(gameObject, iTween.Hash(
-//  "position", transform.position + (transform.up * 2f),
-//                  "time", g_time,
-//  "easetype", iTween.EaseType.linear,
-//  "oncomplete", "onInvincibleState",
-//  "oncompletetarget", gameObject
-//                //"oncompleteparams", GameConstants.DAMAGE_INVINCIBLE_TIME
-
-//));
-//        }
-        //else//後ろ側に壁が無かったら
-        //{
-            iTween.MoveTo(gameObject, iTween.Hash(
+        shooting2.Stopflg = true;   //泡の発射を止める
+        playerContoller_8.Stopflg = true;   //プレイヤーの動きを止める
+        iTween.MoveTo(gameObject, iTween.Hash(
 "position", transform.position - (transform.forward * 2f - transform.up * 2f),
                 "time", g_time,
 "easetype", iTween.EaseType.linear,
@@ -214,12 +216,12 @@ public class PlayerHP_2 : MonoBehaviour {
 
     void ExitStopShoot()   //撃てない状態から
     {
-       // shooting2.Stopflg = false;  //泡が撃てるようにする
+       shooting2.Stopflg = false;  //泡が撃てるようにする
     }
 
     void ExitStopMove()   //動けない状態から
     {
-      //  playerContoller_8.Stopflg = false;  //プレイヤーが動けるようにする
+       playerContoller_8.Stopflg = false;  //プレイヤーが動けるようにする
     }
 
     void GoToGameOver()

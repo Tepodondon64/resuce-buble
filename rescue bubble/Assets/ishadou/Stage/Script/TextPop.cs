@@ -16,7 +16,10 @@ public class TextPop : MonoBehaviour
 
     void Update()
     {
-
+        if (Push == null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void OnTriggerEnter(Collider other)

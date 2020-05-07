@@ -18,8 +18,6 @@ public class PlayerContoller_8 : MonoBehaviour {
     //他のスクリプトでいじれるやつ
     public bool Stopflg; //ノックバック中にtrueになる
 
-
-
     //Animator を入れる変数
     private Animator animator;
 
@@ -31,10 +29,9 @@ public class PlayerContoller_8 : MonoBehaviour {
         transform.localRotation = Quaternion.Euler(0f, 0f, 0f);//画像の傾き
         Stopflg = false;//falseのときは特になにもないが、trueになるとボタン操作を受付なくなる
 
-
-
         //ユニティちゃんの Animator にアクセスする
         animator = GetComponent<Animator>();
+
 	}
 	
 	// Update is called once per frame
@@ -46,12 +43,13 @@ public class PlayerContoller_8 : MonoBehaviour {
     {
         Muki();
         //左右キー入力されたら行動する
-        float horizontalKey = Input.GetAxis("Horizontal");
+        float horizontalKey = Input.GetAxis("Horizontal")/* * Time.deltaTime * speedX */;
         float xSpeed = 0.0f;
 
         //上下キー入力されたら行動する
-        float verticalKey = Input.GetAxis("Vertical");
+        float verticalKey = Input.GetAxis("Vertical")/* * Time.deltaTime * speedZ */;
         float zSpeed = 0.0f;
+
 
         if (horizontalKeyflg != 0 || verticalKeyflg != 0)//右→
         {
@@ -64,16 +62,14 @@ public class PlayerContoller_8 : MonoBehaviour {
             animator.SetBool("Running", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            animator.SetTrigger("Shooting");
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    animator.SetTrigger("Shooting");
+        //}
 
 
         if (horizontalKey > 0 && Stopflg == false)//右
         {
-            //動いた時に動くSEを鳴らす
-            // audioSource.PlayOneShot(MoveSE);
             horizontalKeyflg = 1;//右判定
             xSpeed = speedX;
         }
@@ -82,8 +78,6 @@ public class PlayerContoller_8 : MonoBehaviour {
 
         else if (horizontalKey < 0 && Stopflg == false)//左
         {
-            //動いた時に動くSEを鳴らす
-            //  audioSource.PlayOneShot(MoveSE);
             horizontalKeyflg = -1;//左判定     
             xSpeed = -speedX;
         }
@@ -99,23 +93,19 @@ public class PlayerContoller_8 : MonoBehaviour {
 
         if (verticalKey > 0 && Stopflg == false)//上
         {
-            //動いた時に動くSEを鳴らす
-            // audioSource.PlayOneShot(MoveSE);
+
             verticalKeyflg = 1;//上(前方向)
             //  anim.SetBool("run", true);
             zSpeed = speedZ;
         }
         else if (verticalKey < 0 && Stopflg == false)//下
         {
-            //動いた時に動くSEを鳴らす
-            // audioSource.PlayOneShot(MoveSE);
+
             verticalKeyflg = -1;//下(後ろ方向)
-            //  anim.SetBool("run", true);
             zSpeed = -speedZ;
         }
         else
         {
-            //  anim.SetBool("run", false);
             verticalKeyflg = 0;//上、下押してない
             zSpeed = 0.0f;
         }

@@ -23,7 +23,7 @@ public class EnemyStatus : MonoBehaviour, hidame//←hidameの解説は↓
         //Debug.Log("のこりHPは" + enemy_hp);//成功しているか調べるためにつけたよ
         if(enemy_hp <= 0)
         {
-           // Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }//敵キャラ（はこ（cube)）にアタッチします。

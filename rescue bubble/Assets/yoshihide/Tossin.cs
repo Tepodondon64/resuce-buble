@@ -11,51 +11,52 @@ public class Tossin : MonoBehaviour
     //int Ecnt = 0;                       //フラグ立てに使う
     //float calcZ = 0;                    //敵とプレイヤーの距離を測るのに使う
     GameObject Player;
-    private float targetTime = 2.0f;
+    private float targetTime = 3.0f;
     private float currentTime = 0;
     //public Material material;
+    public Transform _target;
+    private AttackMotion AM;
 
     public GameObject Enemy;
-    float speed = 1.0f;
+    public float speed;
     private Vector3 vec;
+    private Vector3 pos;
+    private Rigidbody rb;
 
     void Start()
     {
-         Player = GameObject.Find("Player");
-
-        //gameObject.GetComponent<Renderer>().material = this.material;
-        //Vector3 playerpos = this.Player.transform.position;
-        //Rigidbody rb = GetComponent<Rigidbody>();
-        //rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+        Player = GameObject.Find("Player");
+        //vec = Player.transform.position;
+        AM = gameObject.GetComponent<AttackMotion>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-       
+        
         currentTime += Time.deltaTime;
         if (targetTime < currentTime)
         {
-            //Rigidbody取得
-            Rigidbody rb = this.GetComponent<Rigidbody>();
-
-            //Vector3 vec = Player.transform.position;
-            //rb.AddForce(vec);
             
+
+            //敵（イノシシ）の座標を変数posに保存
+            pos = this.gameObject.transform.position;
+
+            //プレイヤーの方を向く
+            Vector3 target = _target.position;
+            target.y = this.transform.position.y;
+            this.transform.LookAt(target);
+
+            AM.enabled = false;
+            //Vector3 force = new Vector3(0.0f, target.y, target.z-2.0f);
+
             //現在の速度をログに表示
-            Debug.Log(rb.velocity.magnitude);
+            //Debug.Log(rb.velocity.magnitude);
 
             this.GetComponent<Renderer>().material.color = Color.white;
 
-            //プレイヤーの方を向く
-            this.transform.LookAt(Player.transform);
 
-            //敵の座標を変数posに保存
-            var pos = this.gameObject.transform.position;
-
-            //敵の位置をプレイヤーの位置にする
-            this.transform.position = pos;
-
-            currentTime = 0;
+            //currentTime = 0;
 
             //敵からプレイヤーに向かうベクトルをつくる
             //プレイヤーの位置から敵の位置（弾の位置）を引く
@@ -65,8 +66,8 @@ public class Tossin : MonoBehaviour
             //弾のRigidBodyコンポネントのvelocityに先程求めたベクトルを入れて力を加える
             gameObject.GetComponent<Rigidbody>().velocity = vec;
             //float step = speed * Time.deltaTime;
-            //transform.position = Vector3.MoveTowards(pos, Player.transform.position, 0.8f);
 
+            //Invoke("Attack", 1.0f);
 
             //Vector3 playerpos = this.Player.transform.position;                 //player位置情報取得する
             //this.calcZ = this.transform.position.z - playerpos.z;               //敵のZ座標からボールのZ座標を引く。これで距離が出る
@@ -75,44 +76,9 @@ public class Tossin : MonoBehaviour
             //this.transform.position = t;
 
         }
-
-
-        //Vector3 playerpos = this.Player.transform.position;
-        //InvokeRepeating("Attack", 2, 4);
-        //Invoke("Cancel", 5);
+    }
+    void Attack()
+    {
+        //transform.position = Vector3.MoveTowards(pos, Player.transform.position, speed);
     }
 }
-    //void OncollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.name == "Player")
-    //    {
-    //        Debug.Log("ssss");
-    //        hogeEne = GameObject.Find("Player").GetComponent<Transform>();
-    //        Ecnt = 0;
-
-    //    }
-    //}
-
-//    void Attack()
-//    {
-//        Vector3 playerpos = this.Player.transform.position;                 //player位置情報取得する
-//        this.calcZ = this.transform.position.z - playerpos.z;               //敵のZ座標からボールのZ座標を引く。これで距離が出る
-//        if(this.calcZ <50)
-//        {
-//            if(this.Ecnt == 0)
-//            {
-//                hogeEne = GameObject.Find("Player").GetComponent<Transform>();      //プレイヤーを見つける
-//                tmpE = hogeEne.transform.position;                                  //プレイヤーの位置情報をvector3でtmpに格納
-//                this.Ecnt = 2;
-//            }
-//            if (this.Ecnt == 2)
-//            {
-//                
-//                Debug.Log("aa");
-//                //this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(tmpE.x, tmpE.y, tmpE.z), 0.2f);
-//            }
-//        }
-//    }       
-//}
-
-

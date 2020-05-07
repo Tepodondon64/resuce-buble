@@ -7,7 +7,7 @@ public class TransitionS01 : MonoBehaviour {
 
     private int Goal = 0;
 
-    public int NextStage = 0;
+    private int NextStage = 0;
 
 	// Use this for initialization
 	void Start () {
