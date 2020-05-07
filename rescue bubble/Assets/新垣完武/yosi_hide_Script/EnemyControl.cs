@@ -24,8 +24,12 @@ public class EnemyControl : MonoBehaviour {
     void Update()
     {
         playerPos = this.player.transform.position;
-        this.transform.LookAt(player.transform);
+        playerPos.y = this.transform.position.y;
+        this.transform.LookAt(playerPos);
+        //this.transform.LookAt(player.transform);
         transform.position = Vector3.MoveTowards(transform.position, playerPos,ENEMY_MOVE_SPEED);
+
+        
 
         //経過時間を取得
         //this.searchTime += Time.deltaTime;
