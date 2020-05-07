@@ -57,7 +57,7 @@ public class Wall_Check : MonoBehaviour {
                     AlphaTrigger = true;
                 }
             }
-             Debug.Log("壁をすり抜けている");//
+            // Debug.Log("壁をすり抜けている");//
         }
         //Debug.Log("すり抜けている");
     }
@@ -74,7 +74,7 @@ public class Wall_Check : MonoBehaviour {
         }
 
 
-        Debug.Log("壁を通り抜け終えた");
+      //  Debug.Log("壁を通り抜け終えた");
     }
 
 }

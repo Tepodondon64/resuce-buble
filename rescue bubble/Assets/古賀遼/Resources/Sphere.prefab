@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 135682861626029730}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: FB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,7 +219,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1725317912486240}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
