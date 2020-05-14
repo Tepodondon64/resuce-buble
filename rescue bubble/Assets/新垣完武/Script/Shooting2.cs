@@ -48,9 +48,18 @@ public class Shooting2 : MonoBehaviour {
 
    public bool Stopflg; //ノックバック中にtrueになる
 
+   //スクリプトの取得//
+   PlayerContoller_8 playerContoller_8;
+
+   //Animator を入れる変数
+   private Animator animator;
+
     //Use this for initialization
     void Start()
     {
+        //外部のスクリプトの情報を取得
+        playerContoller_8 = GetComponent<PlayerContoller_8>();//PlayerContoller_8スクリプトの取得
+
         ChargeObject = transform.Find("charge_effects").gameObject;//子オブジェクトのパーティクルを入れる
         ChargeObject.SetActive(false);//子オブジェクトを非表示にして無理やりパーティクルを消すぜ
 
@@ -67,6 +76,9 @@ public class Shooting2 : MonoBehaviour {
         Charge_Time = charge_time;//初期化用に格納する。
 
         Stopflg = false;//falseのときは特になにもないが、trueになるとボタン操作を受付なくなる
+
+        //ユニティちゃんの Animator にアクセスする
+        animator = GetComponent<Animator>();
     }
 
     //Update is called once per frame
@@ -93,6 +105,7 @@ public class Shooting2 : MonoBehaviour {
             {
                 reload_time = Reload_Time;
                 reload_time_flg = false;
+                //animator.SetBool("Shooting2", false);
             }
         }
     }
@@ -100,15 +113,44 @@ public class Shooting2 : MonoBehaviour {
 
     void Shoot()
     {
-        if (bullet_Count < 0)   //万が一bullet_Countがマイナスになったときに０に戻す
+        if (bullet_Count <= 0)   //万が一bullet_Countがマイナスになったときに０に戻す
         {
+            //発射アニメーションを終了
+            animator.SetBool("Shooting", false);
+            animator.SetBool("Run_Shooting", false);
+
+            //待機アニメーションを再生
+           // animator.SetBool("Idling", true);
+
             bullet_Count = 0;
         }
         //  スペースキーが押された時//"Fire1"により右クリックでもおｋ
         if ((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) && reload_time_flg == false && Stopflg == false)//GetButtonDown//GetKeyDown
         {
+            
             if (bullet_Count < bullet_Max)
             {
+                if (playerContoller_8.horizontalKeyflg != 0 || playerContoller_8.verticalKeyflg != 0)//右→
+                {
+                    //(走りながらの)発射アニメーションを再生
+                    animator.SetBool("Run_Shooting", true);
+                    animator.SetBool("Shooting", false);
+
+                    //待機アニメーションをオフ
+                  //  animator.SetBool("Idling", false);
+
+                }
+                else
+                {
+                    //発射アニメーションを再生
+                    animator.SetBool("Shooting", true);
+                    animator.SetBool("Run_Shooting", false);
+
+                    //待機アニメーションをオフ
+                 //   animator.SetBool("Idling", false);
+                }
+
+               
                 reload_time_flg = true;    //玉が発射されたら起動する
                 //bullet_Count++;
 
@@ -204,6 +246,25 @@ public class Shooting2 : MonoBehaviour {
         {
             if (charge_time <= Charge_Time / 2)//チャージショットに必要な時間の半分を過ぎた場合に発動
             {
+                if (playerContoller_8.horizontalKeyflg != 0 || playerContoller_8.verticalKeyflg != 0)//右→
+                {
+                    //(走りながらの)発射アニメーションを再生
+                    animator.SetBool("Run_Shooting", true);
+                    animator.SetBool("Shooting", false);
+
+                    //待機アニメーションをオフ
+                 //   animator.SetBool("Idling", false);
+                }
+                else
+                {
+                    //発射アニメーションを再生
+                    animator.SetBool("Shooting", true);
+                    animator.SetBool("Run_Shooting", false);
+
+                    //待機アニメーションをオフ
+                 //   animator.SetBool("Idling", false);
+                }
+
                 //弾丸の複製　前、右、左
                 GameObject C_bullets = Instantiate(bullet) as GameObject;
                 GameObject R_bullets = Instantiate(bullet) as GameObject;
@@ -236,6 +297,26 @@ public class Shooting2 : MonoBehaviour {
         ///スペースキーが押され続けて離された時(チャージ成功時)
         if ((Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.Space)) && charge_time_flg == true && Stopflg == false)
         {
+            if (playerContoller_8.horizontalKeyflg != 0 || playerContoller_8.verticalKeyflg != 0)//右→
+            {
+                //(走りながらの)発射アニメーションを再生
+                animator.SetBool("Run_Shooting", true);
+                animator.SetBool("Shooting", false);
+
+                //待機アニメーションをオフ
+               // animator.SetBool("Idling", false);
+            }
+            else
+            {
+                //発射アニメーションを再生
+                animator.SetBool("Shooting", true);
+                animator.SetBool("Run_Shooting", false);
+
+                //待機アニメーションをオフ
+                animator.SetBool("Idling", false);
+            }
+
+
             ChargeObject.SetActive(false);//子オブジェクトを非表示にして無理やりパーティクルを消すぜ
             reload_time_flg = true;    //玉が発射されたら起動する
             charge_time_flg = false;
