@@ -188,7 +188,7 @@ public class PlayerHP_2 : MonoBehaviour {
     void OnTriggerEnter(Collider t)//FB
     {
         //もしもぶつかったFBのTagが"FB"であったならば（条件）
-        if (t.gameObject.tag == "FB")
+        if (t.gameObject.tag == "FB" && Invincibleflg == false)
         {
             //被ダメージのアニメーションを再生
             animator.SetBool("Damageing", true);
