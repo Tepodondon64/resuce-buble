@@ -11,7 +11,7 @@ public class Arm : MonoBehaviour {
 
         void Update()
     {
-        Invoke("yobi", 0);
+        Invoke("yobi", 5);
         Vector3 tmp = GameObject.Find("Righthand").transform.position;
         //GameObject.Find("Righthand").transform.position = new Vector3(tmp.x + 100, tmp.y, tmp.z);
         //transform.rotation = transform.rotation ;
@@ -28,7 +28,12 @@ public class Arm : MonoBehaviour {
             //K = 0;            
         }
 
-        
+        if(S>18)
+        {
+            transform.rotation = transform.rotation * Quaternion.Euler(-5, 0, 0);
+            Debug.Log(gameObject.transform.localEulerAngles);
+            S++;
+        }
         
         if(S == 18)
         {
@@ -86,13 +91,14 @@ public class Arm : MonoBehaviour {
     //        S = 0;
     //    }
     //}
-    void FBB()
-    {
-        Vector3 tmp = GameObject.Find("Righthand").transform.position;
-        //GameObject.Find("Righthand").transform.position = new Vector3(tmp.x + 100, tmp.y, tmp.z);
-        //transform.rotation = transform.rotation ;
-        GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(tmp.x, tmp.y, tmp.z - 10), Quaternion.identity);
+
+    //void FBB()
+    //{
+    //    Vector3 tmp = GameObject.Find("Righthand").transform.position;
+    //    //GameObject.Find("Righthand").transform.position = new Vector3(tmp.x + 100, tmp.y, tmp.z);
+    //    //transform.rotation = transform.rotation ;
+    //    GameObject obj = (GameObject)Resources.Load("Sphere");
+    //    GameObject instance = (GameObject)Instantiate(obj, new Vector3(tmp.x, tmp.y, tmp.z - 10), Quaternion.identity);
         
-    }
+    //}
 }

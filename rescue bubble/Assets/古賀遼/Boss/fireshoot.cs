@@ -42,7 +42,8 @@ public class fireshoot : MonoBehaviour
         //    Size += 1;
 
         //}
-        Invoke("Shoot", 2f);
+        //玉を発射する関数呼び出し
+        Invoke("Shoot", 3f);
         ////targetに向かって進む
         //transform.position += transform.forward * speed;
     }
@@ -51,6 +52,7 @@ public class fireshoot : MonoBehaviour
     {
         if (Time < 2)
         {
+            //プレイヤーの位置を取る
             this.transform.LookAt(target.transform);
             isCalledOnce = true;
             Time++;

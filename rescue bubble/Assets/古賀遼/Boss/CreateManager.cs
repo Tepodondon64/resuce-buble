@@ -10,11 +10,19 @@ public class CreateManager : MonoBehaviour
     
     bool witch = false;
 
+    int eCount;
+
+    public EnemyStatus enemystatus;
+
     //public float speed = 1000;
     // 初期化
     void Start()
     {
-
+        //ボスのHPをいれる変数
+        
+        //EnemyStatusの数値を取得
+        eCount = enemystatus.enemy_hp;
+        Debug.Log(eCount); //5
         target = GameObject.Find("Player").transform;
         //Vector3 MSPO = GameObject.Find("MS").transform.position;
         StartCoroutine ("ChangeColor1");
@@ -22,24 +30,39 @@ public class CreateManager : MonoBehaviour
 
     IEnumerator ChangeColor1()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0);
 
         //// プレハブを元にオブジェクトを生成する 火炎放射
         //GameObject obj = (GameObject)Resources.Load("Flameradiation");
         //GameObject instance = (GameObject)Instantiate(obj,new Vector3(-6.36f, 9.01f, -4f), Quaternion.identity);
 
         // プレハブを元にオブジェクトを生成する
-        Invoke("Call", 1f);
-
+        Invoke("Call", 5f);
+        Debug.Log("これはできてる");
 
         //5秒停止
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
 
+        Debug.Log(eCount); //5
         //もう一つのコルーチンを実行する
         StartCoroutine("ChangeColor2");
     }
 
     IEnumerator ChangeColor2()
+    {
+
+        // プレハブを元にオブジェクトを生成する
+        Invoke("Call", 5f);
+
+        //5秒停止
+        yield return new WaitForSeconds(10);
+
+        //もう一つのコルーチンを実行する
+        StartCoroutine("ChangeColor1");
+        Debug.Log(eCount); //5
+    }
+
+    IEnumerator ChangeColor3()
     {
 
         // プレハブを元にオブジェクトを生成する
@@ -101,11 +124,11 @@ public class CreateManager : MonoBehaviour
         if (BOSSHP >= 7)
         {
 
-            Invoke("FB1", 0.8f);
-            Invoke("FB2", 1f);
-            Invoke("FB3", 1.2f);
-            Invoke("FB4", 1.4f);
-            Invoke("FB5", 1.6f);
+            Invoke("FB1", 2f);
+            Invoke("FB1", 3f);
+            Invoke("FB1", 4f);
+            Invoke("FB1", 5f);
+            Invoke("FB1", 6f);
             //witch = true;
             //enabled = false;
         }
@@ -115,33 +138,34 @@ public class CreateManager : MonoBehaviour
 
     void FB1()
     {
-        GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(20.0f, 30.0f, -11.3f), Quaternion.identity);
+        Vector3 tmp = GameObject.Find("Righthand").transform.position;
+        GameObject obj = (GameObject)Resources.Load("SFB");
+        GameObject instance = (GameObject)Instantiate(obj,tmp, Quaternion.identity);
     }
-    void FB2()
-    {
-        GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(10.0f, 30.0f, -11.3f), Quaternion.identity);
-    }
+    //void FB2()
+    //{
+    //    GameObject obj = (GameObject)Resources.Load("SFB");
+    //    GameObject instance = (GameObject)Instantiate(obj, new Vector3(10.0f, 30.0f, -11.3f), Quaternion.identity);
+    //}
 
-    void FB3()
-    {
-        GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(0.0f, 30.0f, -11.3f), Quaternion.identity);
-    }
+    //void FB3()
+    //{
+    //    GameObject obj = (GameObject)Resources.Load("SFB");
+    //    GameObject instance = (GameObject)Instantiate(obj, new Vector3(0.0f, 30.0f, -11.3f), Quaternion.identity);
+    //}
 
-    void FB4()
-    {
-        GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(-10.0f, 30.0f, -11.3f), Quaternion.identity);
-    }
+    //void FB4()
+    //{
+    //    GameObject obj = (GameObject)Resources.Load("SFB");
+    //    GameObject instance = (GameObject)Instantiate(obj, new Vector3(-10.0f, 30.0f, -11.3f), Quaternion.identity);
+    //}
 
-    void FB5()
-    {
-        GameObject obj = (GameObject)Resources.Load("Sphere");
-        GameObject instance = (GameObject)Instantiate(obj, new Vector3(-20.0f, 30.0f, -11.3f), Quaternion.identity);
-        //witch = false;
-    }
+    //void FB5()
+    //{
+    //    GameObject obj = (GameObject)Resources.Load("SFB");
+    //    GameObject instance = (GameObject)Instantiate(obj, new Vector3(-20.0f, 30.0f, -11.3f), Quaternion.identity);
+    //    //witch = false;
+    //}
 
     void FD()
     {
