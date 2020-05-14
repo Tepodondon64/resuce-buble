@@ -10,8 +10,8 @@ public class PlayerContoller_8 : MonoBehaviour {
 
     //プライベート変数
     private Rigidbody rb = null;
-    private int horizontalKeyflg = 0;//右:1、左:-1 無:0
-    private int verticalKeyflg = 0;//上:1、下:-1   無:0(前、後ろ)
+    public int horizontalKeyflg = 0;//右:1、左:-1 無:0
+    public int verticalKeyflg = 0;//上:1、下:-1   無:0(前、後ろ)
 
     private bool MukiDebug_flg = false; //傾きのデバッグ文字を表示するのか？(false:非表示    true:表示)
 
@@ -21,6 +21,9 @@ public class PlayerContoller_8 : MonoBehaviour {
     //Animator を入れる変数
     private Animator animator;
 
+    //効果音の設定
+    private GameObject MoveSE_Object; //足音を入れるための変数
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,8 +32,11 @@ public class PlayerContoller_8 : MonoBehaviour {
         transform.localRotation = Quaternion.Euler(0f, 0f, 0f);//画像の傾き
         Stopflg = false;//falseのときは特になにもないが、trueになるとボタン操作を受付なくなる
 
-        //ユニティちゃんの Animator にアクセスする
+        //Playerの Animator にアクセスする
         animator = GetComponent<Animator>();
+
+        MoveSE_Object = transform.Find("MoveSE_Object").gameObject;//子オブジェクトのMoveSE_Objectを入れる
+        MoveSE_Object.SetActive(false);//子オブジェクトを非表示にして無理やり足音を消すぜ
 
 	}
 	
@@ -51,15 +57,22 @@ public class PlayerContoller_8 : MonoBehaviour {
         float zSpeed = 0.0f;
 
 
-        if (horizontalKeyflg != 0 || verticalKeyflg != 0)//右→
+        if (horizontalKeyflg != 0 || verticalKeyflg != 0)//上下右左をいずれか押してなければ
         {
             //走るアニメーションを再生
             animator.SetBool("Running", true);
+            //発射アニメーションをオフ
+            animator.SetBool("Shooting", false);
+
+            //発射時にショットSEを鳴らす
+            //audioSource.PlayOneShot(MoveSE);
+            MoveSE_Object.SetActive(true);//子オブジェクトを表示させて足音を起動させる。
         }
-        else
+        else//上下右左をいずれか押していれば
         {
             //走るアニメーションはオフ
             animator.SetBool("Running", false);
+            MoveSE_Object.SetActive(false);//子オブジェクトを非表示にして足音を起動させる。
         }
 
         //if (Input.GetKeyDown(KeyCode.K))

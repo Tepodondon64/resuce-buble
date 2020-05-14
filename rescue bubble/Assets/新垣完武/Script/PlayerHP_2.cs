@@ -30,6 +30,9 @@ public class PlayerHP_2 : MonoBehaviour {
     Shooting2 shooting2;
     PlayerContoller_8 playerContoller_8;
 
+    //Animator を入れる変数
+    private Animator animator;
+
     void Start()
     {
         //外部のスクリプトの情報を取得
@@ -46,7 +49,8 @@ public class PlayerHP_2 : MonoBehaviour {
         OriginMr = PlayerMr;
         //PlayerMr.material.color = PlayerMr.material.color - new Color32(0, 0, 0, 100);
 
-
+        //Playerの Animator にアクセスする
+        animator = GetComponent<Animator>();
 
     }
 
@@ -116,6 +120,7 @@ public class PlayerHP_2 : MonoBehaviour {
         {
             //ExitStopShootを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
             Invoke("ExitStopShoot", 0.6f);
+            
         }
 
         if (playerContoller_8.Stopflg == true)
@@ -143,12 +148,9 @@ public class PlayerHP_2 : MonoBehaviour {
         //もしもぶつかった相手のTagが"Enemy"であったならば（条件） 
         if (other.gameObject.CompareTag("Enemy") && Invincibleflg == false)
         {
+            //被ダメージのアニメーションを再生
+            animator.SetBool("Damageing", true);
 
-            //foreach (ContactPoint contact in other.contacts)
-            //{
-            //   // Debug.Log(contact.point);
-            //}
-            //Debug.Log(_Rotation);
 
             OnDamageEffect();//この関数に移動
             Invincibleflg = true;//無敵時間になるフラグオン
@@ -167,6 +169,10 @@ public class PlayerHP_2 : MonoBehaviour {
         //もしもぶつかった相手のTagが"Enemy"であったならば（条件） 
         if (other.gameObject.CompareTag("Enemy") && Invincibleflg == false)
         {
+            //被ダメージのアニメーションを再生
+            animator.SetBool("Damageing", true);
+
+
             OnDamageEffect();//この関数に移動
             Invincibleflg = true;//無敵時間になるフラグオン
 
@@ -182,8 +188,11 @@ public class PlayerHP_2 : MonoBehaviour {
     void OnTriggerEnter(Collider t)//FB
     {
         //もしもぶつかったFBのTagが"FB"であったならば（条件）
-        if (t.gameObject.tag == "FB")
+        if (t.gameObject.tag == "FB" && Invincibleflg == false)
         {
+            //被ダメージのアニメーションを再生
+            animator.SetBool("Damageing", true);
+
             OnDamageEffect();//この関数に移動
             Invincibleflg = true;//無敵時間になるフラグオン
 
@@ -202,7 +211,7 @@ public class PlayerHP_2 : MonoBehaviour {
         shooting2.Stopflg = true;   //泡の発射を止める
         playerContoller_8.Stopflg = true;   //プレイヤーの動きを止める
         iTween.MoveTo(gameObject, iTween.Hash(
-"position", transform.position - (transform.forward * 2f - transform.up * 2f),
+"position", transform.position - (transform.forward * 1.2f - transform.up * 0f),
                 "time", g_time,
 "easetype", iTween.EaseType.linear,
 "oncomplete", "onInvincibleState",
@@ -217,6 +226,8 @@ public class PlayerHP_2 : MonoBehaviour {
     void ExitStopShoot()   //撃てない状態から
     {
        shooting2.Stopflg = false;  //泡が撃てるようにする
+       //被ダメージのアニメーションをオフ
+       animator.SetBool("Damageing", false);
     }
 
     void ExitStopMove()   //動けない状態から
