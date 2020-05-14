@@ -20,6 +20,7 @@ TagManager:
   - Burn
   - MS
   - FB
+  - lost
   layers:
   - Default
   - TransparentFX
