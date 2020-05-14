@@ -8,9 +8,11 @@ public class moeru : MonoBehaviour {
     private float TimeOut = 1.0f;
     private float Timer = 0.0f;
     private int ObjectHP;
+    private int FireHP = 5;
 
 
     public GameObject Fire;
+    private Vector3 scale;
 
     // Use this for initialization
     void Start () {
@@ -26,23 +28,58 @@ public class moeru : MonoBehaviour {
         {
             ObjectHP = 300;
         }
+        scale.x = 0.5f;
+        scale.y = 0.5f;
+        scale.z = 0.5f;
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.tag == "Enemy")
         {
             this.StayEnemy = 1;
         }
-        if (other.gameObject.CompareTag("Burn")){
+        if (other.gameObject.tag == "Burn"){
             this.StayEnemy = 1;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (this.gameObject.tag == "Burn")
+        {
+            if (other.gameObject.tag == "Bullet")
+            {
+                Debug.Log(FireHP);
+                FireHP -= 1;
+                if (FireHP > 0)
+                {
+                    Fire.transform.localScale = new Vector3(scale.x -= 0.1f, scale.y -= 0.1f, scale.z -= 0.1f);
+                }
+                else if(FireHP<=0)
+                {
+                    Fire.SetActive(false);
+                    this.gameObject.tag = "lost";
+                }
+            }
+            if (other.gameObject.tag == "ChargeBullet")
+            {
+                FireHP -= 10;
+                Fire.SetActive(false);
+                this.gameObject.tag = "lost";
+            }
         }
     }
 
     // Update is called once per frame
     void Update () {
+        if (this.gameObject.tag == "lost")
+        {
+            this.StayEnemy = 0;
+        }
         if (StayEnemy == 1)
         {
+            
             if (this.ObjectHP > 0)
             {
                 Timer += Time.deltaTime;
@@ -55,10 +92,12 @@ public class moeru : MonoBehaviour {
             }
             else
             {
+                GetComponent<CapsuleCollider>().enabled = false;
                 this.gameObject.tag = "Burn";
                 GetComponent<Renderer>().material.color = Color.black;
                 Fire.SetActive(true);
             }
+            this.StayEnemy = 0;
         }
-	}
+    }
 }
