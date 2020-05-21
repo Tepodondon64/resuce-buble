@@ -16,6 +16,14 @@ public class PlayerHP_2 : MonoBehaviour {
     AudioSource audioSource;    //オーディオを所得するための変数
     public AudioClip DamageSE;         //プレイヤーがダメージを受けた時のSE
 
+    //↓どのゲームオーバーに行くかを判別させるためのトリガー↓
+    public bool Stage1; //Stage1のゲームオーバーに行く
+    public bool Stage2; //Stage2のゲームオーバーに行く
+    public bool Stage3; //Stage3のゲームオーバーに行く
+    public bool BossStage;  //BossStageのゲームオーバーに行く
+
+    private int MAX = -90;
+    private int Prx = -5;
 
     Transform player;   //プレイヤーのトランスフォーム取得
     //bool knock_back;   //←こちら、Playerの子オブジェクトのBack_collisionのスクリプトのbackTriggerを入れるための変数です。
@@ -59,6 +67,11 @@ public class PlayerHP_2 : MonoBehaviour {
         DebugLog();
         Invincible();
         GameOver();
+
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    SceneManager.LoadScene(3);
+        //}
     }
 
     void DebugLog() //デバッグログを確認する用の関数
@@ -133,10 +146,13 @@ public class PlayerHP_2 : MonoBehaviour {
 
     void GameOver()
     {
+       //int MAX = -90;
+       // int Prx = -5;
         if (HP <= 0)
         {
-            // 1.5秒後に「GoToGameOver()」メソッドを実行する。
-            Invoke("GoToGameOver", 1.5f);
+            //HPが0になったときのアニメーションを再生
+            animator.SetBool("CanDie", true);
+            Invoke("GoToGameOver", 2.0f);
         }
     }
 
@@ -145,44 +161,99 @@ public class PlayerHP_2 : MonoBehaviour {
 
         Vector3 _Rotation = player.transform.localEulerAngles;
 
-        //もしもぶつかった相手のTagが"Enemy"であったならば（条件） 
-        if (other.gameObject.CompareTag("Enemy") && Invincibleflg == false)
+        if (HP > 0) //HPが0よりも多ければ通る
         {
-            //被ダメージのアニメーションを再生
-            animator.SetBool("Damageing", true);
+
+            //もしもぶつかった相手のTagが"Enemy"であったならば（条件） 
+            if (other.gameObject.CompareTag("Enemy") && Invincibleflg == false)
+            {
+                //被ダメージのアニメーションを再生
+                animator.SetBool("Damageing", true);
 
 
-            OnDamageEffect();//この関数に移動
-            Invincibleflg = true;//無敵時間になるフラグオン
+                OnDamageEffect();//この関数に移動
+                Invincibleflg = true;//無敵時間になるフラグオン
 
-            //ダメージを受けた時にSEを鳴らす
-            audioSource.PlayOneShot(DamageSE);
-            //HPを１ずつ減少させる
-            HP -= 1;
+                //ダメージを受けた時にSEを鳴らす
+                audioSource.PlayOneShot(DamageSE);
+                //HPを１ずつ減少させる
+                HP -= 2;
+            }
+
+
+            //もしもぶつかった相手のTagが"Burn"であったならば（条件） 
+            if (other.gameObject.CompareTag("Burn") && Invincibleflg == false)
+            {
+                //被ダメージのアニメーションを再生
+                animator.SetBool("Damageing", true);
+
+
+                OnDamageEffect();//この関数に移動
+                Invincibleflg = true;//無敵時間になるフラグオン
+
+                //ダメージを受けた時にSEを鳴らす
+                audioSource.PlayOneShot(DamageSE);
+                //HPを１ずつ減少させる
+                HP -= 1;
+            }
+
+            //もしもぶつかったFBのTagが"FB"であったならば（条件）
+            if (other.gameObject.tag == "FB" && Invincibleflg == false)
+            {
+                //被ダメージのアニメーションを再生
+                animator.SetBool("Damageing", true);
+
+                OnDamageEffect();//この関数に移動
+                Invincibleflg = true;//無敵時間になるフラグオン
+
+                //ダメージを受けた時にSEを鳴らす
+                audioSource.PlayOneShot(DamageSE);
+                //HPを1ずつ減少させる
+                HP -= 2;
+            }
+
         }
-
     }
 
     void OnCollisionStay(Collision other)//当たっている間(体当たりしてくるエネミーにぶつかり続けてもダメージが食らうように作ったもの)
     {
 
-        //もしもぶつかった相手のTagが"Enemy"であったならば（条件） 
-        if (other.gameObject.CompareTag("Enemy") && Invincibleflg == false)
+        if (HP > 0) //HPが0よりも多ければ通る
         {
-            //被ダメージのアニメーションを再生
-            animator.SetBool("Damageing", true);
+
+            //もしもぶつかった相手のTagが"Enemy"であったならば（条件） 
+            if (other.gameObject.CompareTag("Enemy") && Invincibleflg == false)
+            {
+                //被ダメージのアニメーションを再生
+                animator.SetBool("Damageing", true);
 
 
-            OnDamageEffect();//この関数に移動
-            Invincibleflg = true;//無敵時間になるフラグオン
+                OnDamageEffect();//この関数に移動
+                Invincibleflg = true;//無敵時間になるフラグオン
 
-            //ダメージを受けた時にSEを鳴らす
-            audioSource.PlayOneShot(DamageSE);
+                //ダメージを受けた時にSEを鳴らす
+                audioSource.PlayOneShot(DamageSE);
 
-            //HPを１ずつ減少させる
-            HP -= 1;
+                //HPを１ずつ減少させる
+                HP -= 2;
+            }
+
+            //もしもぶつかった相手のTagが"Burn"であったならば（条件） 
+            if (other.gameObject.CompareTag("Burn") && Invincibleflg == false)
+            {
+                //被ダメージのアニメーションを再生
+                animator.SetBool("Damageing", true);
+
+
+                OnDamageEffect();//この関数に移動
+                Invincibleflg = true;//無敵時間になるフラグオン
+
+                //ダメージを受けた時にSEを鳴らす
+                audioSource.PlayOneShot(DamageSE);
+                //HPを１ずつ減少させる
+                HP -= 1;
+            }
         }
-
     }
 
     void OnTriggerEnter(Collider t)//FB
@@ -199,7 +270,7 @@ public class PlayerHP_2 : MonoBehaviour {
             //ダメージを受けた時にSEを鳴らす
             audioSource.PlayOneShot(DamageSE);
             //HPを1ずつ減少させる
-            HP -= 1;
+            HP -= 2;
         }
 
     }
@@ -225,19 +296,46 @@ public class PlayerHP_2 : MonoBehaviour {
 
     void ExitStopShoot()   //撃てない状態から
     {
-       shooting2.Stopflg = false;  //泡が撃てるようにする
+        if (HP > 0) //HPが0よりも多ければ通る
+        {
+            shooting2.Stopflg = false;  //泡が撃てるようにする
+        }
        //被ダメージのアニメーションをオフ
        animator.SetBool("Damageing", false);
     }
 
     void ExitStopMove()   //動けない状態から
     {
-       playerContoller_8.Stopflg = false;  //プレイヤーが動けるようにする
+        if (HP > 0) //HPが0よりも多ければ通る
+        {
+            playerContoller_8.Stopflg = false;  //プレイヤーが動けるようにする
+        }
     }
 
     void GoToGameOver()
     {
-        SceneManager.LoadScene("GameOver");
+        if (Stage1 == true && Stage2 == false && Stage3 == false && BossStage == false)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+       else if (Stage1 == false && Stage2 == true && Stage3 == false && BossStage == false)
+        {
+            SceneManager.LoadScene("GameOver2");
+        }
+       else if (Stage1 == false && Stage2 == false && Stage3 == true && BossStage == false)
+        {
+            SceneManager.LoadScene("GameOver3");
+        }
+       else if (Stage1 == false && Stage2 == false && Stage3 == false && BossStage == true)
+        {
+            SceneManager.LoadScene("GameOverBoss");
+        }
+        else
+        {
+            Debug.LogError("正しくトリガーが入力されていないので、ゲームオーバー出来ません。");
+        }
+
+       // SceneManager.LoadScene("GameOver");
 
     }
 }
