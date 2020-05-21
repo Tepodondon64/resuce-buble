@@ -30,27 +30,68 @@ public class Bullet_Destroy2 : MonoBehaviour {
     }
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "ChargeBullet"
+            && collision.gameObject.tag != "floor" && collision.gameObject.tag != "Map" && collision.gameObject.tag != "Untagged")
         {
             Destroy(gameObject);
             script.bullet_Count--;//弾が消えたらカウントを1減らす
-           // Debug.Log("君は今、壁に攻撃した");//
         }
 
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Destroy(gameObject);
-            script.bullet_Count--;//弾が消えたらカウントを1減らす
-            //script.SP_power = 4;
-           // Debug.Log("君は今、敵に攻撃した");//
-        }
 
-        if (collision.gameObject.tag == "move obj")
-        {
-            Destroy(gameObject);
-            script.bullet_Count--;//弾が消えたらカウントを1減らす
-          //  Debug.Log("君は今、動くオブジェクトに攻撃した");//       
-        }
+        //if (collision.gameObject.tag == "Wall") //壁のタグ
+        //{
+        //    Destroy(gameObject);
+        //    script.bullet_Count--;//弾が消えたらカウントを1減らす
+        //   // Debug.Log("君は今、壁に攻撃した");//
+        //}
+
+        //if (collision.gameObject.tag == "Enemy")    //敵のタグ
+        //{
+        //    Destroy(gameObject);
+        //    script.bullet_Count--;//弾が消えたらカウントを1減らす
+        //    //script.SP_power = 4;
+        //   // Debug.Log("君は今、敵に攻撃した");//
+        //}
+
+        //if (collision.gameObject.tag == "move obj")//浮かぶオブジェクトのタグ
+        //{
+        //    Destroy(gameObject);
+        //    script.bullet_Count--;//弾が消えたらカウントを1減らす
+        //  //  Debug.Log("君は今、動くオブジェクトに攻撃した");//       
+        //}
+
+        //if (collision.gameObject.tag == "Burn") //炎のオブジェクトタグ
+        //{
+        //    Destroy(gameObject);
+        //    script.bullet_Count--;//弾が消えたらカウントを1減らす
+        //    // Debug.Log("君は今、壁に攻撃した");//
+        //}
+
+        //if (collision.gameObject.tag == "rebble")//瓦礫（がれき）のタグ
+        //{
+        //    Destroy(gameObject);
+        //    script.bullet_Count--;//弾が消えたらカウントを1減らす      
+        //}
+
+        //if (collision.gameObject.tag == "Easy")//多分燃える前のオブジェクトのタグ1
+        //{
+        //    Destroy(gameObject);
+        //    script.bullet_Count--;//弾が消えたらカウントを1減らす      
+        //}
+
+        //if (collision.gameObject.tag == "Normal")//多分燃える前のオブジェクトのタグ2
+        //{
+        //    Destroy(gameObject);
+        //    script.bullet_Count--;//弾が消えたらカウントを1減らす      
+        //}
+
+        //if (collision.gameObject.tag == "Hard")//多分燃える前のオブジェクトのタグ3
+        //{
+        //    Destroy(gameObject);
+        //    script.bullet_Count--;//弾が消えたらカウントを1減らす      
+        //}
+
+
         var yodame_kakunin = collision.gameObject.GetComponent<hidame>();
         if (yodame_kakunin != null)//当たった相手のGetComponent情報の<hidame>が使われているならnullじゃない
         //つまりこの攻撃を食らうことができるオブジェクトである
