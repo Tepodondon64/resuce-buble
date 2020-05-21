@@ -11,24 +11,31 @@ public class Tossin : MonoBehaviour
     //int Ecnt = 0;                       //フラグ立てに使う
     //float calcZ = 0;                    //敵とプレイヤーの距離を測るのに使う
     GameObject Player;
-    private float targetTime = 3.0f;
+    private float targetTime = 6.0f;
     private float currentTime = 0;
     //public Material material;
     public Transform _target;
     private AttackMotion AM;
+    private Animator animator;
 
-    public GameObject Enemy;
+    //public GameObject Enemy;
     public float speed;
     private Vector3 vec;
     private Vector3 pos;
     private Rigidbody rb;
 
+    //効果音の設定
+    AudioSource audioSource;                //オーディオを取得するための変数
+    //public AudioClip TossinSE;              //突進時に再生させるための変数
+    
     void Start()
     {
         Player = GameObject.Find("Player");
         //vec = Player.transform.position;
         AM = gameObject.GetComponent<AttackMotion>();
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+        //audioSource = GetComponent<AudioSource>();      //AudioのComponentの取得
     }
 
     void Update()
@@ -37,7 +44,7 @@ public class Tossin : MonoBehaviour
         currentTime += Time.deltaTime;
         if (targetTime < currentTime)
         {
-            
+            animator.SetBool("tossin", true);
 
             //敵（イノシシ）の座標を変数posに保存
             pos = this.gameObject.transform.position;
@@ -53,7 +60,7 @@ public class Tossin : MonoBehaviour
             //現在の速度をログに表示
             //Debug.Log(rb.velocity.magnitude);
 
-            this.GetComponent<Renderer>().material.color = Color.white;
+            //this.GetComponent<Renderer>().material.color = Color.white;
 
 
             //currentTime = 0;
@@ -65,6 +72,11 @@ public class Tossin : MonoBehaviour
 
             //弾のRigidBodyコンポネントのvelocityに先程求めたベクトルを入れて力を加える
             gameObject.GetComponent<Rigidbody>().velocity = vec;
+            //GetComponent<Rigidbody>().AddForce(Player.transform.position * speed, ForceMode.Force);
+
+            //突進時に音を再生する
+            //audioSource.PlayOneShot(TossinSE);
+
             //float step = speed * Time.deltaTime;
 
             //Invoke("Attack", 1.0f);

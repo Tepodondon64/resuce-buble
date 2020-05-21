@@ -11,22 +11,34 @@ public class DestroyFireBall : MonoBehaviour {
         
     }
 
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+
+            Destroy(gameObject);
+            Debug.Log("当たった");
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+
             Destroy(gameObject);
-           
+
         }
 
         if (collision.gameObject.tag == "Wall")
         {
+            Debug.Log("当たった");
             Destroy(gameObject);
-            
+
         }
 
-        if(collision.gameObject.tag == "Burn")
-        { 
+        if (collision.gameObject.tag == "Burn")
+        {
             Destroy(gameObject);
         }
 
@@ -35,6 +47,10 @@ public class DestroyFireBall : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        
+        if (collision.gameObject.tag == "rebble")
+        {
+            Destroy(gameObject);
+        }
+
     }
 }
