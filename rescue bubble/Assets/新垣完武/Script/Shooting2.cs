@@ -48,6 +48,8 @@ public class Shooting2 : MonoBehaviour {
 
    public bool Stopflg; //ノックバック中にtrueになる
 
+   public bool Charge_Limit; //チャージ泡を禁止にするかどうか　false:制限無し true:制限あり(撃てない)
+
    //スクリプトの取得//
    PlayerContoller_8 playerContoller_8;
 
@@ -124,11 +126,20 @@ public class Shooting2 : MonoBehaviour {
 
             bullet_Count = 0;
         }
-        //  スペースキーが押された時//"Fire1"により右クリックでもおｋ
-        if ((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) && reload_time_flg == false && Stopflg == false)//GetButtonDown//GetKeyDown
+
+        if (Stopflg == true)//チャージが中断される系の処理
         {
-            
-            if (bullet_Count < bullet_Max)
+            charge_time = Charge_Time;//チャージ時間をリセット
+            ChargeObject.SetActive(false);//子オブジェクトを非表示にして無理やりパーティクルを消すぜ
+            charge_time_flg = false ;   //チャージ中断
+
+        }
+
+        //  スペースキーが押された時//"Fire1"により右クリックでもおｋ
+        if ((Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.Space)) && reload_time_flg == false && Stopflg == false)//GetButtonDown//GetKeyDown
+        {
+
+            if (bullet_Count < bullet_Max && (bullet_Count % 3 == 0 || bullet_Count == 5 || bullet_Count == 4))
             {
                 if (playerContoller_8.horizontalKeyflg != 0 || playerContoller_8.verticalKeyflg != 0)//右→
                 {
@@ -227,24 +238,81 @@ public class Shooting2 : MonoBehaviour {
 
 ///////////ここからチャージショット/////////
 
-        //  スペースキーが押され続けた時(チャージスタート)
-        if ((Input.GetButton("Fire1") || Input.GetKey(KeyCode.Space)) && reload_time_flg == false && Stopflg == false)
+        if (Charge_Limit == false)//チャージ泡が制限が掛かっていなければ通る(falseなら、撃てる。)
         {
-            charge_time -= 1;
-            if (charge_time <= 0)
+            //  スペースキーが押され続けた時(チャージスタート)
+            if ((Input.GetButton("Fire2") || Input.GetKey(KeyCode.Space)) && reload_time_flg == false && Stopflg == false)
             {
-                charge_time_flg = true;    //
-                ChargeObject.SetActive(true);//子オブジェクトを表示にして無理やりパーティクルを表示するぜ
-                //CHParticle.Play;
-                //charge_time = Charge_Time;
-                // charge_time_flg = false;
+                charge_time -= 1;
+                if (charge_time <= 0)
+                {
+                    charge_time_flg = true;    //
+                    ChargeObject.SetActive(true);//子オブジェクトを表示にして無理やりパーティクルを表示するぜ
+                    //CHParticle.Play;
+                    //charge_time = Charge_Time;
+                    // charge_time_flg = false;
+                }
             }
-        }
 
-        ///スペースキーが押され続けて離された時(チャージ失敗時)
-        if ((Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.Space)) && charge_time_flg == false && Stopflg == false)
-        {
-            if (charge_time <= Charge_Time / 2)//チャージショットに必要な時間の半分を過ぎた場合に発動
+            ///スペースキーが押され続けて離された時(チャージ失敗時)
+            if ((Input.GetButtonUp("Fire2") || Input.GetKeyUp(KeyCode.Space)) && charge_time_flg == false && Stopflg == false)
+            {
+                if (charge_time <= Charge_Time / 2)//チャージショットに必要な時間の半分を過ぎた場合に発動
+                {
+                    if (bullet_Count < bullet_Max && (bullet_Count % 3 == 0 || bullet_Count == 5 || bullet_Count == 4))
+                    {
+                        if (playerContoller_8.horizontalKeyflg != 0 || playerContoller_8.verticalKeyflg != 0)//右→
+                        {
+
+                            //(走りながらの)発射アニメーションを再生
+                            animator.SetBool("Run_Shooting", true);
+                            animator.SetBool("Shooting", false);
+
+                            //待機アニメーションをオフ
+                            //   animator.SetBool("Idling", false);
+                        }
+                        else
+                        {
+                            //発射アニメーションを再生
+                            animator.SetBool("Shooting", true);
+                            animator.SetBool("Run_Shooting", false);
+
+                            //待機アニメーションをオフ
+                            //   animator.SetBool("Idling", false);
+                        }
+
+                        //弾丸の複製　前、右、左
+                        GameObject C_bullets = Instantiate(bullet) as GameObject;
+                        GameObject R_bullets = Instantiate(bullet) as GameObject;
+                        GameObject L_bullets = Instantiate(bullet) as GameObject;
+
+                        //弾丸の発射方向の制御 正面
+                        Vector3 C_force;//前
+                        C_force = (this.gameObject.transform.forward) * tama_speed;//forward//前
+                        Vector3 R_force;//右
+                        Vector3 L_force;//左
+                        R_force = (RMuzzle.forward) * tama_speed;//右
+                        L_force = (LMuzzle.forward) * tama_speed;//左 
+
+                        // 正面の水平方向
+                        C_bullets.GetComponent<Rigidbody>().AddForce(C_force);// Rigidbodyに力を加えて発射  前方向
+                        C_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
+
+                        R_bullets.GetComponent<Rigidbody>().AddForce(R_force);// Rigidbodyに力を加えて発射  右方向
+                        R_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
+
+                        L_bullets.GetComponent<Rigidbody>().AddForce(L_force);// Rigidbodyに力を加えて発射  左方向
+                        L_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
+
+                        //発射時にショットSEを鳴らす
+                        audioSource.PlayOneShot(ShootSE);
+                    }
+                }
+                charge_time = Charge_Time;//チャージ時間をリセット
+            }
+
+            ///スペースキーが押され続けて離された時(チャージ成功時)
+            if ((Input.GetButtonUp("Fire2") || Input.GetKeyUp(KeyCode.Space)) && charge_time_flg == true && Stopflg == false)
             {
                 if (playerContoller_8.horizontalKeyflg != 0 || playerContoller_8.verticalKeyflg != 0)//右→
                 {
@@ -253,7 +321,7 @@ public class Shooting2 : MonoBehaviour {
                     animator.SetBool("Shooting", false);
 
                     //待機アニメーションをオフ
-                 //   animator.SetBool("Idling", false);
+                    // animator.SetBool("Idling", false);
                 }
                 else
                 {
@@ -262,81 +330,30 @@ public class Shooting2 : MonoBehaviour {
                     animator.SetBool("Run_Shooting", false);
 
                     //待機アニメーションをオフ
-                 //   animator.SetBool("Idling", false);
+                    animator.SetBool("Idling", false);
                 }
 
-                //弾丸の複製　前、右、左
-                GameObject C_bullets = Instantiate(bullet) as GameObject;
-                GameObject R_bullets = Instantiate(bullet) as GameObject;
-                GameObject L_bullets = Instantiate(bullet) as GameObject;
 
-                //弾丸の発射方向の制御 正面
-                Vector3 C_force;//前
-                C_force = (this.gameObject.transform.forward) * tama_speed;//forward//前
-                Vector3 R_force;//右
-                Vector3 L_force;//左
-                R_force = (RMuzzle.forward) * tama_speed;//右
-                L_force = (LMuzzle.forward) * tama_speed;//左 
+                ChargeObject.SetActive(false);//子オブジェクトを非表示にして無理やりパーティクルを消すぜ
+                reload_time_flg = true;    //玉が発射されたら起動する
+                charge_time_flg = false;
+                charge_time = Charge_Time;//チャージ時間をリセット
+                // 弾丸の複製
+                GameObject bullets = Instantiate(charge_bullet) as GameObject;
 
-                // 正面の水平方向
-                C_bullets.GetComponent<Rigidbody>().AddForce(C_force);// Rigidbodyに力を加えて発射  前方向
-                C_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
+                Vector3 force;
 
-                R_bullets.GetComponent<Rigidbody>().AddForce(R_force);// Rigidbodyに力を加えて発射  右方向
-                R_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
+                force = this.gameObject.transform.forward * charge_tama_speed;//
 
-                L_bullets.GetComponent<Rigidbody>().AddForce(L_force);// Rigidbodyに力を加えて発射  左方向
-                L_bullets.transform.localPosition = Muzzle.position;// 弾丸の発射位置
+                // Rigidbodyに力を加えて発射
+                bullets.GetComponent<Rigidbody>().AddForce(force);
 
-                //発射時にショットSEを鳴らす
-                audioSource.PlayOneShot(ShootSE);
+                // 弾丸の位置を調整transform.localPosition
+                bullets.transform.localPosition = Muzzle.position;
+
+                //発射時にチャージショットのSEを鳴らす
+                audioSource.PlayOneShot(Charge_ShootSE);
             }
-            charge_time = Charge_Time;//チャージ時間をリセット
         }
-
-        ///スペースキーが押され続けて離された時(チャージ成功時)
-        if ((Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.Space)) && charge_time_flg == true && Stopflg == false)
-        {
-            if (playerContoller_8.horizontalKeyflg != 0 || playerContoller_8.verticalKeyflg != 0)//右→
-            {
-                //(走りながらの)発射アニメーションを再生
-                animator.SetBool("Run_Shooting", true);
-                animator.SetBool("Shooting", false);
-
-                //待機アニメーションをオフ
-               // animator.SetBool("Idling", false);
-            }
-            else
-            {
-                //発射アニメーションを再生
-                animator.SetBool("Shooting", true);
-                animator.SetBool("Run_Shooting", false);
-
-                //待機アニメーションをオフ
-                animator.SetBool("Idling", false);
-            }
-
-
-            ChargeObject.SetActive(false);//子オブジェクトを非表示にして無理やりパーティクルを消すぜ
-            reload_time_flg = true;    //玉が発射されたら起動する
-            charge_time_flg = false;
-            charge_time = Charge_Time;//チャージ時間をリセット
-            // 弾丸の複製
-            GameObject bullets = Instantiate(charge_bullet) as GameObject;
-
-            Vector3 force;
-
-            force = this.gameObject.transform.forward * charge_tama_speed;//
-
-            // Rigidbodyに力を加えて発射
-            bullets.GetComponent<Rigidbody>().AddForce(force);
-
-            // 弾丸の位置を調整transform.localPosition
-            bullets.transform.localPosition = Muzzle.position;
-
-            //発射時にチャージショットのSEを鳴らす
-            audioSource.PlayOneShot(Charge_ShootSE);
-        }
-
     }
 }
