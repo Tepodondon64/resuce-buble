@@ -100,6 +100,8 @@ public class CreateManager : MonoBehaviour
         Invoke("mark", 0);
 
         yield return new WaitForSeconds(10);
+
+        StartCoroutine("ChangeColor3");
     }
 
     //void Update()
