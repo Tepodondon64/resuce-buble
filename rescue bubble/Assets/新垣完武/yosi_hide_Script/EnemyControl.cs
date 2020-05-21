@@ -13,9 +13,11 @@ public class EnemyControl : MonoBehaviour {
     GameObject player;
     private float searchTime = 0;
     public float ENEMY_MOVE_SPEED = 0.05f;
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         //追跡したいオブジェクトの名前を入れる
         player = GameObject.Find("Player");
@@ -29,7 +31,7 @@ public class EnemyControl : MonoBehaviour {
         //this.transform.LookAt(player.transform);
         transform.position = Vector3.MoveTowards(transform.position, playerPos,ENEMY_MOVE_SPEED);
 
-        
+        animator.SetTrigger("Idou");
 
         //経過時間を取得
         //this.searchTime += Time.deltaTime;
