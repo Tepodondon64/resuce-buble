@@ -8,15 +8,21 @@ public class DestroyPush : MonoBehaviour
 
     public float enemyhp = 10;
     public GameObject Push;
+    public GameObject Fire;
 
     private float bullet_power = 1;//通常弾の攻撃力
     private float chargebullet_power = 10;//チャージショットの攻撃力
+
+    private Vector3 FireScale;
 
     public float SP_power = 0;//
     int count = 0;
     int count2 = 0;
     void Start()
     {
+        FireScale.x = 0.5f;
+        FireScale.y = 1.0f;
+        FireScale.z = 0.5f;
         // enemyhp = 1;
         // Debug.Log(enemyhp);//10
     }
@@ -29,11 +35,13 @@ public class DestroyPush : MonoBehaviour
         if (other.gameObject.tag == "Bullet")//通常弾に当たったとき
         {
             enemyhp = enemyhp - bullet_power;
+            FireScale.x -= 0.05f;
+            FireScale.y -= 0.1f;
+            FireScale.z -= 0.05f;
             if (enemyhp <= 0)
             {
-                gameObject.GetComponent<Renderer>().material.color = Color.red;
                 this.tag = "Bubble";
-
+                GetComponent<CapsuleCollider>().enabled = false;
             }
         }
 
@@ -42,9 +50,8 @@ public class DestroyPush : MonoBehaviour
             enemyhp = enemyhp - chargebullet_power;
             if (enemyhp <= 0)
             {
-                gameObject.GetComponent<Renderer>().material.color = Color.red;
                 this.tag = "Bubble";
-
+                GetComponent<CapsuleCollider>().enabled = false;
             }
         }
     }
@@ -52,17 +59,14 @@ public class DestroyPush : MonoBehaviour
     void Update()
     {
         // Debug.Log(enemyhp);//
-        Transform myTransform = this.transform;
-
-
-        // 座標を取得
-        Vector3 pos = myTransform.position;
-
-        this.transform.localScale = new Vector3(3 + (enemyhp / 2), 1 + (enemyhp / 10), 3 + (enemyhp / 2));
-
+        //Transform myTransform = this.transform;
+        if (Fire.gameObject != null)
+        {
+            Fire.transform.localScale = new Vector3(FireScale.x, FireScale.y, FireScale.z);
+        }
         if (enemyhp <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(Fire.gameObject);
             Destroy(Push);
         }
 
