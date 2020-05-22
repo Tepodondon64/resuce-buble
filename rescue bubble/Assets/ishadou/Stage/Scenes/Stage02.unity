@@ -451,6 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!1 &220146812
 GameObject:
@@ -515,6 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!114 &309471020
 MonoBehaviour:
@@ -528,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!1 &342852592 stripped
 GameObject:
@@ -590,6 +593,16 @@ Prefab:
     - target: {fileID: 4014893018505066, guid: 25b98ee21ee63564eafbe54d3f7f3d68, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735290013020492, guid: 25b98ee21ee63564eafbe54d3f7f3d68,
+        type: 2}
+      propertyPath: Stage2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735290013020492, guid: 25b98ee21ee63564eafbe54d3f7f3d68,
+        type: 2}
+      propertyPath: HP
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25b98ee21ee63564eafbe54d3f7f3d68, type: 2}
@@ -725,6 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!114 &438799771
 MonoBehaviour:
@@ -738,6 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!1001 &447608609
 Prefab:
@@ -1071,6 +1086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!1 &704968086 stripped
 GameObject:
@@ -1224,6 +1240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!114 &806064631
 MonoBehaviour:
@@ -1237,6 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!1 &866155274 stripped
 GameObject:
@@ -1255,6 +1273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!1001 &905650195
 Prefab:
@@ -1864,6 +1883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!1001 &1193709077
 Prefab:
@@ -2083,6 +2103,17 @@ Transform:
   m_PrefabParentObject: {fileID: 4014893018505066, guid: 25b98ee21ee63564eafbe54d3f7f3d68,
     type: 2}
   m_PrefabInternal: {fileID: 348497845}
+--- !u!114 &1314337701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314337699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b090cdf387759504e9f3cdd35b25c98b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1325190664
 Prefab:
   m_ObjectHideFlags: 0
@@ -2241,6 +2272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!1 &1493475542 stripped
 GameObject:
@@ -2658,6 +2690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhp: 10
+  Fire: {fileID: 0}
   SP_power: 0
 --- !u!1001 &1849206882
 Prefab:
