@@ -13,6 +13,7 @@ public class moeru : MonoBehaviour {
 
     public GameObject Fire;
     private Vector3 scale;
+    private float AfterX, AfterY, AfterZ;
 
     // Use this for initialization
     void Start () {
@@ -28,9 +29,13 @@ public class moeru : MonoBehaviour {
         {
             ObjectHP = 300;
         }
-        scale.x = 0.5f;
-        scale.y = 0.5f;
-        scale.z = 0.5f;
+        scale.x = Fire.transform.localScale.x;
+        scale.y = Fire.transform.localScale.y;
+        scale.z = Fire.transform.localScale.z;
+        this.AfterX = scale.x / 5;
+        this.AfterY = scale.y / 5;
+        this.AfterZ = scale.z / 5;
+        //StayEnemy = 1;
     }
 
     void OnTriggerStay(Collider other)
@@ -54,7 +59,9 @@ public class moeru : MonoBehaviour {
                 FireHP -= 1;
                 if (FireHP > 0)
                 {
-                    Fire.transform.localScale = new Vector3(scale.x -= 0.1f, scale.y -= 0.1f, scale.z -= 0.1f);
+                    Fire.transform.localScale = new Vector3(scale.x -= AfterX
+                        , scale.y -= AfterY
+                        , scale.z -= AfterZ);
                 }
                 else if(FireHP<=0)
                 {
@@ -94,7 +101,7 @@ public class moeru : MonoBehaviour {
             {
                 GetComponent<CapsuleCollider>().enabled = false;
                 this.gameObject.tag = "Burn";
-                GetComponent<Renderer>().material.color = Color.black;
+                //GetComponent<Renderer>().material.color = Color.black;
                 Fire.SetActive(true);
             }
             this.StayEnemy = 0;
