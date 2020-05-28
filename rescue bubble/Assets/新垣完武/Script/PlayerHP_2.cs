@@ -25,6 +25,8 @@ public class PlayerHP_2 : MonoBehaviour {
     private int MAX = -90;
     private int Prx = -5;
 
+    private bool NoUpdateflg;
+
     Transform player;   //プレイヤーのトランスフォーム取得
     //bool knock_back;   //←こちら、Playerの子オブジェクトのBack_collisionのスクリプトのbackTriggerを入れるための変数です。
 
@@ -37,6 +39,12 @@ public class PlayerHP_2 : MonoBehaviour {
     //スクリプトの取得//
     Shooting2 shooting2;
     PlayerContoller_8 playerContoller_8;
+    TimeScript timeScript;
+    FadeOutImage fadeOutImage;
+
+    //外部のオブジェクトを取得//
+    GameObject time;
+    GameObject FloorImage;
 
     //Animator を入れる変数
     private Animator animator;
@@ -46,6 +54,12 @@ public class PlayerHP_2 : MonoBehaviour {
         //外部のスクリプトの情報を取得
         shooting2 = GetComponent<Shooting2>();//Shooting2スクリプトの取得
         playerContoller_8 = GetComponent<PlayerContoller_8>();//PlayerContoller_7スクリプトの取得
+
+        time = GameObject.Find("Time");//タイムの情報を取得する
+        timeScript = time.GetComponent<TimeScript>();//TimeScriptスクリプトの取得
+
+        FloorImage = GameObject.Find("Image");//FloorNameの子要素にあるイメージの情報を取得する
+        fadeOutImage = FloorImage.GetComponent<FadeOutImage>();//FadeOutImageスクリプトの取得
 
         //Componentを取得
         audioSource = GetComponent<AudioSource>();//AudioのComponentを取得
@@ -60,6 +74,8 @@ public class PlayerHP_2 : MonoBehaviour {
         //Playerの Animator にアクセスする
         animator = GetComponent<Animator>();
 
+        NoUpdateflg = false;
+
     }
 
     void Update()
@@ -67,7 +83,7 @@ public class PlayerHP_2 : MonoBehaviour {
         DebugLog();
         Invincible();
         GameOver();
-
+        PlayerStop();
         //if (Input.GetMouseButtonDown(1))
         //{
         //    SceneManager.LoadScene(3);
@@ -128,31 +144,56 @@ public class PlayerHP_2 : MonoBehaviour {
         {
         }
         ///////敵に当たったら反応する奴↓↓
-
-        if (shooting2.Stopflg == true)
+        if (NoUpdateflg == true)
         {
-            //ExitStopShootを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
-            Invoke("ExitStopShoot", 0.6f);
-            
-        }
 
-        if (playerContoller_8.Stopflg == true)
-        {
-            //ExitStopMoveを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
-            Invoke("ExitStopMove", 0.6f);
+            if (shooting2.Stopflg == true && timeScript.timeEndflg == false)
+            {
+                //ExitStopShootを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
+                Invoke("ExitStopShoot", 0.6f);
+
+            }
+
+            if (playerContoller_8.Stopflg == true && timeScript.timeEndflg == false)
+            {
+                //ExitStopMoveを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
+                Invoke("ExitStopMove", 0.6f);
+            }
         }
 
     }
+
+
+    void PlayerStop()
+    {
+        if (NoUpdateflg == false)
+        {
+            if (fadeOutImage.FadeEndflg == false)//ゲームスタートするまでは動けない
+            {
+                shooting2.Stopflg = true;   //泡の発射を止める
+                playerContoller_8.Stopflg = true;   //プレイヤーの動きを止める
+            }
+            else if (fadeOutImage.FadeEndflg == true)//ゲームスタートしたら動ける
+            {
+                shooting2.Stopflg = false;   //泡が撃てるようにする
+                playerContoller_8.Stopflg = false;   //プレイヤーが動けるようにする
+                NoUpdateflg = true;
+            }
+        }
+    }
+
 
     void GameOver()
     {
        //int MAX = -90;
        // int Prx = -5;
-        if (HP <= 0)
+        if (HP <= 0 || timeScript.timeEndflg == true)
         {
+            shooting2.Stopflg = true;   //泡の発射を止める
+            playerContoller_8.Stopflg = true;   //プレイヤーの動きを止める
             //HPが0になったときのアニメーションを再生
             animator.SetBool("CanDie", true);
-            Invoke("GoToGameOver", 2.0f);
+            Invoke("GoToGameOver", 3.0f);
         }
     }
 
@@ -161,7 +202,7 @@ public class PlayerHP_2 : MonoBehaviour {
 
         Vector3 _Rotation = player.transform.localEulerAngles;
 
-        if (HP > 0) //HPが0よりも多ければ通る
+        if (HP > 0 && timeScript.timeEndflg == false) //HPが0よりも多ければ通る
         {
 
             //もしもぶつかった相手のTagが"Enemy"であったならば（条件） 
@@ -218,7 +259,7 @@ public class PlayerHP_2 : MonoBehaviour {
     void OnCollisionStay(Collision other)//当たっている間(体当たりしてくるエネミーにぶつかり続けてもダメージが食らうように作ったもの)
     {
 
-        if (HP > 0) //HPが0よりも多ければ通る
+        if (HP > 0 && timeScript.timeEndflg == false) //HPが0よりも多ければ通る
         {
 
             //もしもぶつかった相手のTagが"Enemy"であったならば（条件） 
@@ -281,22 +322,22 @@ public class PlayerHP_2 : MonoBehaviour {
     {
         shooting2.Stopflg = true;   //泡の発射を止める
         playerContoller_8.Stopflg = true;   //プレイヤーの動きを止める
-        iTween.MoveTo(gameObject, iTween.Hash(
-"position", transform.position - (transform.forward * 1.2f - transform.up * 0f),
-                "time", g_time,
-"easetype", iTween.EaseType.linear,
-"oncomplete", "onInvincibleState",
-"oncompletetarget", gameObject
-                //"oncompleteparams", GameConstants.DAMAGE_INVINCIBLE_TIME
+//        iTween.MoveTo(gameObject, iTween.Hash(
+//"position", transform.position - (transform.forward * 1.2f - transform.up * 0f),
+//                "time", g_time,
+//"easetype", iTween.EaseType.linear,
+//"oncomplete", "onInvincibleState",
+//"oncompletetarget", gameObject
+//                //"oncompleteparams", GameConstants.DAMAGE_INVINCIBLE_TIME
 
-));
+//));
        // }
         //ExitDamageEffect();
     }
 
     void ExitStopShoot()   //撃てない状態から
     {
-        if (HP > 0) //HPが0よりも多ければ通る
+        if (HP > 0 && timeScript.timeEndflg == false || fadeOutImage.FadeEndflg == true) //HPが0よりも多ければ通る
         {
             shooting2.Stopflg = false;  //泡が撃てるようにする
         }
@@ -306,7 +347,7 @@ public class PlayerHP_2 : MonoBehaviour {
 
     void ExitStopMove()   //動けない状態から
     {
-        if (HP > 0) //HPが0よりも多ければ通る
+        if (HP > 0 && timeScript.timeEndflg == false || fadeOutImage.FadeEndflg == true) //HPが0よりも多ければ通る
         {
             playerContoller_8.Stopflg = false;  //プレイヤーが動けるようにする
         }
