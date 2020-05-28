@@ -70,6 +70,7 @@ public class inosisi : MonoBehaviour {
         //gameObject.GetComponent<Rigidbody>().velocity = vec;
 
         second = 200;
+        animator.SetBool("tossin", false);
         yield return new WaitForSeconds(1);
         StartCoroutine("tosin2");
 
@@ -78,6 +79,9 @@ public class inosisi : MonoBehaviour {
 
     IEnumerator tosin2()
     {
+
+        
+
         // ループ
         while (true)
         {
@@ -85,6 +89,7 @@ public class inosisi : MonoBehaviour {
             //Vector3 vec = Player.transform.position - pos;
             //gameObject.GetComponent<Rigidbody>().velocity = vec;
             yield return new WaitForSeconds(0.0001f);
+            animator.SetBool("tossin", true);
             transform.position += transform.forward * speed;
             Debug.Log("loop");
             second--;
