@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114638334785561108}
   - component: {fileID: 114862138147365666}
   - component: {fileID: 114615080117310312}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 224261856026638852}
   - component: {fileID: 222935367363037042}
   - component: {fileID: 114866094524867148}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 4190696697891232}
   - component: {fileID: 33133203301506906}
   - component: {fileID: 23685859397912006}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 114337963813211232}
   - component: {fileID: 114468762164251570}
   - component: {fileID: 82262980115900990}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: rou_kougeki
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 224578483339315008}
   - component: {fileID: 222387302587535574}
   - component: {fileID: 114737818338417070}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224262455144088406}
   - component: {fileID: 114019770256109018}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4811844416454214}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4390087323230232}
   - component: {fileID: 33535292284901744}
   - component: {fileID: 23828120893510890}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pasted__pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4161278315999220}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: imagePlane2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 4974707064932624}
   - component: {fileID: 33899824572661256}
   - component: {fileID: 23235184316332988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224382896030404072}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4841286435767088}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: imagePlane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,6 +763,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5544f71c52649b042a8338f0400a623d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syouka: {fileID: 0}
+  EnemyTime: 0
+  maxSpeed: 0
+  EnemyScale: {x: 0, y: 0, z: 0}
 --- !u!114 &114862138147365666
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4031302615925136}
   - component: {fileID: 33796396211153584}
   - component: {fileID: 23851094303635940}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4501695667875144}
   - component: {fileID: 33494993721292446}
   - component: {fileID: 23817029941225622}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pasted__pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4489761991595316}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: imagePlane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224857217597794740}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4235242028990982}
   - component: {fileID: 33970980651981842}
   - component: {fileID: 23386615998820452}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 114463179760178694}
   - component: {fileID: 114876512907377294}
   - component: {fileID: 114277343771506910}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 114553710580809360}
   - component: {fileID: 114422828239943318}
   - component: {fileID: 82649681390977420}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: rou_kougeki 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224059335972265386}
   - component: {fileID: 114882277813353802}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 224756867183819078}
   - component: {fileID: 222289797353357280}
   - component: {fileID: 114651206126287410}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4844122345796690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4901128568824820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: imagePlane2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 224071060997700364}
   - component: {fileID: 222420112360660794}
   - component: {fileID: 114719757099894704}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}

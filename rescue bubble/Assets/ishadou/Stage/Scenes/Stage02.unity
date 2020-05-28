@@ -604,6 +604,11 @@ Prefab:
       propertyPath: HP
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114735290013020492, guid: 25b98ee21ee63564eafbe54d3f7f3d68,
+        type: 2}
+      propertyPath: Stage1
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25b98ee21ee63564eafbe54d3f7f3d68, type: 2}
   m_IsPrefabParent: 0

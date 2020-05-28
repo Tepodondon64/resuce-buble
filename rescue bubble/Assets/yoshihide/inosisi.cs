@@ -42,7 +42,7 @@ public class inosisi : MonoBehaviour {
 
         //足音呼び出し
         //InvokeRepeating("SEsan", 6, 2);
-        audioSource.volume = volume;
+       // audioSource.volume = volume;
 
     }
 

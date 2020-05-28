@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224950848781596728}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224593538100800430}
   - component: {fileID: 114218143810589808}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114460165397063094}
   - component: {fileID: 114159641991563568}
   - component: {fileID: 114215345905315480}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4902132834361382}
   - component: {fileID: 33618079731651898}
   - component: {fileID: 23415265453169104}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pasted__pCube1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 224000653482830822}
   - component: {fileID: 222095639646918374}
   - component: {fileID: 114211256660480998}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 224661666745267368}
   - component: {fileID: 222940515488273748}
   - component: {fileID: 114937423638415396}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4102495645834288}
   - component: {fileID: 33562132218459804}
   - component: {fileID: 23596984525531470}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pasted__pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4328031265259056}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4103317530719836}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: imagePlane2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 114061075298828026}
   - component: {fileID: 114398448142693344}
   - component: {fileID: 114578619543195618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tonton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4637745048226284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4549493697552200}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: imagePlane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4241187833909846}
   - component: {fileID: 33873046369066542}
   - component: {fileID: 23578536049339692}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,6 +528,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   speed: 30
+  m_rushprefab: {fileID: 0}
+  offsetx: 0
+  offsety: 0
+  offsetz: 0
 --- !u!114 &114159641991563568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -652,6 +656,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5544f71c52649b042a8338f0400a623d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syouka: {fileID: 0}
+  EnemyTime: 0
+  maxSpeed: 0
+  EnemyScale: {x: 0, y: 0, z: 0}
 --- !u!114 &114460165397063094
 MonoBehaviour:
   m_ObjectHideFlags: 1

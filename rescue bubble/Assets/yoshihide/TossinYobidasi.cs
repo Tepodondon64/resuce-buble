@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TossinYobidasi : MonoBehaviour {
 
-    private Tossin tossin;
+  //  private Tossin tossin;
     private Rigidbody rb;
     private AttackMotion AM;
 
     void Start()
     {
-        tossin = gameObject.GetComponent<Tossin>();
+     //   tossin = gameObject.GetComponent<Tossin>();
         AM = gameObject.GetComponent<AttackMotion>();
         rb = gameObject.GetComponent<Rigidbody>();
     }
@@ -21,7 +21,7 @@ public class TossinYobidasi : MonoBehaviour {
         if(collision.gameObject.tag == "Wall")
         {
             //突進エネミーの動きを止める
-            tossin.enabled = false;
+         //   tossin.enabled = false;
             
             //Debug.Log("ai");
 
@@ -35,7 +35,7 @@ public class TossinYobidasi : MonoBehaviour {
         if(collision.gameObject.tag == "rebble")
         {
             //突進エネミーの動きを止める
-            tossin.enabled = false;
+          //  tossin.enabled = false;
 
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
@@ -47,7 +47,7 @@ public class TossinYobidasi : MonoBehaviour {
 
     void Release()
     {
-        tossin.enabled = true;
+        //tossin.enabled = true;
         //AM.enabled = false;
     }
 }

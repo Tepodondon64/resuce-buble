@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4716430187211232}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: imagePlane2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4288497935320652}
   - component: {fileID: 33683826870768104}
   - component: {fileID: 23763753658984718}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pasted__pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4145712351887572}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: imagePlane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 224570572535462188}
   - component: {fileID: 222468479473510072}
   - component: {fileID: 114769429087441660}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224978017367710050}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 4613771475902118}
   - component: {fileID: 33212811312336764}
   - component: {fileID: 23702107574992232}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4858987412212354}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 224558421215727218}
   - component: {fileID: 222909553193676104}
   - component: {fileID: 114302063151247764}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,11 +151,10 @@ GameObject:
   - component: {fileID: 54644171423802250}
   - component: {fileID: 65963394258447452}
   - component: {fileID: 114123090754721422}
-  - component: {fileID: 114888419715691932}
-  - component: {fileID: 114626220786654514}
   - component: {fileID: 114121701676890654}
   - component: {fileID: 114656482663557364}
-  m_Layer: 0
+  - component: {fileID: 114608631557829380}
+  m_Layer: 9
   m_Name: tonton (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -170,7 +169,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4059684696802268}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +191,7 @@ GameObject:
   - component: {fileID: 114368998224428892}
   - component: {fileID: 114895462919505416}
   - component: {fileID: 114525750707111750}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +208,7 @@ GameObject:
   - component: {fileID: 4205344300889822}
   - component: {fileID: 33303517928875126}
   - component: {fileID: 23275762399531082}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pasted__pCube1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224481356228313072}
   - component: {fileID: 114582256658787514}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,7 +677,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114626220786654514
+--- !u!114 &114608631557829380
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -686,16 +685,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1470635498652088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 905c3417de303154db9b94ecadffdbbf, type: 3}
+  m_Script: {fileID: 11500000, guid: c342d5053989d1440a836ef456fea24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ttarget: {fileID: 0}
   _target: {fileID: 0}
-  speed: 1
-  m_rushprefab: {fileID: 114919797091377156, guid: 82018cfbc4f691b4f9fb452b8ffc140f,
-    type: 2}
-  offsetx: -1
-  offsety: 1.8
-  offsetz: 1.3
+  second: 0
+  speed: 0.2
+  TossinSE2: {fileID: 0}
+  volume: 0
 --- !u!114 &114656482663557364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -735,17 +733,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114888419715691932
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1470635498652088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 802ebebeed1c139429ec5fe9d7c41e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114895462919505416
 MonoBehaviour:
   m_ObjectHideFlags: 1

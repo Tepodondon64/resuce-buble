@@ -8,6 +8,7 @@ public class EnemyStatus : MonoBehaviour, hidame//←hidameの解説は↓
     //hidame(自分で作ったインターフェースの名前ファイル名
     //これをやるとインターフェースの中のやつが使える
     public int enemy_hp = 100;                   //敵の体力
+    public bool Desflg;
 
     void hidame.hidame_01(int damage)    //hidameというファイルの中の
     {                                  //hidame_01という機能を使うぞって意味です
@@ -16,6 +17,7 @@ public class EnemyStatus : MonoBehaviour, hidame//←hidameの解説は↓
     // Use this for initialization
     void Start()
     {
+
     }
     // Update is called once per frame
     void Update()
@@ -23,6 +25,10 @@ public class EnemyStatus : MonoBehaviour, hidame//←hidameの解説は↓
         //Debug.Log("のこりHPは" + enemy_hp);//成功しているか調べるためにつけたよ
         if(enemy_hp <= 0)
         {
+            if (Desflg == true)
+            {
+                Destroy(gameObject);
+            }
             //Destroy(gameObject);
         }
     }

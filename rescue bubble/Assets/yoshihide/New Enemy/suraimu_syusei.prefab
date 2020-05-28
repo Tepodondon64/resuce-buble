@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224056464745108302}
   - component: {fileID: 114602098762241932}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4036683344346310}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: suraimu_4:group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 224570321425950612}
   - component: {fileID: 222725183185536762}
   - component: {fileID: 114974415125865552}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 114257603503869048}
   - component: {fileID: 114962451341515764}
   - component: {fileID: 114530603599412396}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: suraimu_syusei
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 224458229060398000}
   - component: {fileID: 222686987807855628}
   - component: {fileID: 114203439244370206}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4039742256949406}
   - component: {fileID: 33980920891215486}
   - component: {fileID: 23547582507270884}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: suraimu_4:pasted__pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4027738776562390}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: suraimu_4:imagePlane2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224205984092980136}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 4478576940263746}
   - component: {fileID: 33540310784821264}
   - component: {fileID: 23679073451986026}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: suraimu_4:pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 114307359751129370}
   - component: {fileID: 114645720356434844}
   - component: {fileID: 114283802798560884}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 4361139660542690}
   - component: {fileID: 33899709036236560}
   - component: {fileID: 23709964120701828}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: suraimu_4:pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4335799092374930}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: suraimu_4:group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4513320984077446}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: suraimu_4:imagePlane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

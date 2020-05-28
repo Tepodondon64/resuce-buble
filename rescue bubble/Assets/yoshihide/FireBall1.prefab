@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4644713277897198}
   - component: {fileID: 108774483318396758}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 135331899759617112}
   - component: {fileID: 54773795010007000}
   - component: {fileID: 114774990188271140}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FireBall1
   m_TagString: FB
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 4174591252864100}
   - component: {fileID: 198790433396781238}
   - component: {fileID: 199868210956825094}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Fire_mini_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
