@@ -45,7 +45,7 @@ public class Shooting2 : MonoBehaviour {
    public GameObject Ltarget;   //左側のターゲットを入れる
    public GameObject Rtarget;   //右側のターゲットを入れる
 
-
+   //public GameObject Shoot_ParticlePrefabs; //ショットのパーティクルを入れる
    public bool Stopflg; //ノックバック中にtrueになる
 
    public bool Charge_Limit; //チャージ泡を禁止にするかどうか　false:制限無し true:制限あり(撃てない)
@@ -150,12 +150,22 @@ public class Shooting2 : MonoBehaviour {
                     //待機アニメーションをオフ
                   //  animator.SetBool("Idling", false);
 
+                    //GameObject particle = Instantiate(Shoot_ParticlePrefabs) as GameObject;//通常泡の発射パーティクルのプレハブのクローンを生成している
+                    //Vector3 shootPos = (Muzzle.position);//通常泡の発射地点を取得している。
+                    //particle.transform.position = shootPos;//通常泡の発射パーティクルの発生地点を入れている
+
+
+
                 }
                 else
                 {
                     //発射アニメーションを再生
                     animator.SetBool("Shooting", true);
                     animator.SetBool("Run_Shooting", false);
+
+                    //GameObject particle = Instantiate(Shoot_ParticlePrefabs) as GameObject;//通常泡の発射パーティクルのプレハブのクローンを生成している
+                    //Vector3 shootPos = (Muzzle.position);//通常泡の発射地点を取得している。
+                    //particle.transform.position = shootPos;//通常泡の発射パーティクルの発生地点を入れている
 
                     //待機アニメーションをオフ
                  //   animator.SetBool("Idling", false);

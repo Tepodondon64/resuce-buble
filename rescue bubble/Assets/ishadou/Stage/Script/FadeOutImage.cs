@@ -12,11 +12,14 @@ public class FadeOutImage : MonoBehaviour {
 
     public GameObject Floor;
 
+    public bool FadeEndflg; //timerが1になったらtrueになる
+
 	// Use this for initialization
 	void Start () {
         red = GetComponent<Image>().color.r;
         green = GetComponent<Image>().color.g;
         blue = GetComponent<Image>().color.b;
+        FadeEndflg = false;
     }
 	
 	// Update is called once per frame
@@ -26,6 +29,7 @@ public class FadeOutImage : MonoBehaviour {
         if (timer >= 1)
         {
             timer = 1;
+            FadeEndflg = true;
             if (alfa == 0)
             {
                 alfa = 0;
