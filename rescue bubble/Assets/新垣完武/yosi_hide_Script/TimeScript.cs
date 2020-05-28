@@ -48,7 +48,7 @@ public class TimeScript : MonoBehaviour {
         if (time < 0){  //制限時間が0になったら通る
             timeEndflg = true;  //trueになったら
             // 2.0秒後に「GoToGameOver()」メソッドを実行する。
-            Invoke("GoToGameOver", 2.0f);
+            Invoke("GoToGameOver", 3.0f);
         }
 
         if ((/*Input.GetButtonDown("Fire3") ||*/ Input.GetKeyDown(KeyCode.K)))//キーボードのKキーを押すと時間を操れる

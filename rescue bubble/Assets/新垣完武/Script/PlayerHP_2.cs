@@ -25,6 +25,8 @@ public class PlayerHP_2 : MonoBehaviour {
     private int MAX = -90;
     private int Prx = -5;
 
+    private bool NoUpdateflg;
+
     Transform player;   //プレイヤーのトランスフォーム取得
     //bool knock_back;   //←こちら、Playerの子オブジェクトのBack_collisionのスクリプトのbackTriggerを入れるための変数です。
 
@@ -71,6 +73,8 @@ public class PlayerHP_2 : MonoBehaviour {
 
         //Playerの Animator にアクセスする
         animator = GetComponent<Animator>();
+
+        NoUpdateflg = false;
 
     }
 
@@ -140,18 +144,21 @@ public class PlayerHP_2 : MonoBehaviour {
         {
         }
         ///////敵に当たったら反応する奴↓↓
-
-        if (shooting2.Stopflg == true)
+        if (NoUpdateflg == true)
         {
-            //ExitStopShootを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
-            Invoke("ExitStopShoot", 0.6f);
-            
-        }
 
-        if (playerContoller_8.Stopflg == true)
-        {
-            //ExitStopMoveを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
-            Invoke("ExitStopMove", 0.6f);
+            if (shooting2.Stopflg == true && timeScript.timeEndflg == false)
+            {
+                //ExitStopShootを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
+                Invoke("ExitStopShoot", 0.6f);
+
+            }
+
+            if (playerContoller_8.Stopflg == true && timeScript.timeEndflg == false)
+            {
+                //ExitStopMoveを0.6秒後に呼び出す//ちなみにノックバックは0.4秒で終わります。
+                Invoke("ExitStopMove", 0.6f);
+            }
         }
 
     }
@@ -159,15 +166,19 @@ public class PlayerHP_2 : MonoBehaviour {
 
     void PlayerStop()
     {
-        if (fadeOutImage.FadeEndflg == false)//ゲームスタートするまでは動けない
+        if (NoUpdateflg == false)
         {
-            shooting2.Stopflg = true;   //泡の発射を止める
-            playerContoller_8.Stopflg = true;   //プレイヤーの動きを止める
-        }
-        else if (fadeOutImage.FadeEndflg == true)//ゲームスタートしたら動ける
-        {
-            shooting2.Stopflg = false;   //泡が撃てるようにする
-            playerContoller_8.Stopflg = false;   //プレイヤーが動けるようにする
+            if (fadeOutImage.FadeEndflg == false)//ゲームスタートするまでは動けない
+            {
+                shooting2.Stopflg = true;   //泡の発射を止める
+                playerContoller_8.Stopflg = true;   //プレイヤーの動きを止める
+            }
+            else if (fadeOutImage.FadeEndflg == true)//ゲームスタートしたら動ける
+            {
+                shooting2.Stopflg = false;   //泡が撃てるようにする
+                playerContoller_8.Stopflg = false;   //プレイヤーが動けるようにする
+                NoUpdateflg = true;
+            }
         }
     }
 
@@ -182,7 +193,7 @@ public class PlayerHP_2 : MonoBehaviour {
             playerContoller_8.Stopflg = true;   //プレイヤーの動きを止める
             //HPが0になったときのアニメーションを再生
             animator.SetBool("CanDie", true);
-            Invoke("GoToGameOver", 2.0f);
+            Invoke("GoToGameOver", 3.0f);
         }
     }
 

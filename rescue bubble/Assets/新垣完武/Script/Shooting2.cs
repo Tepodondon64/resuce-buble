@@ -77,7 +77,7 @@ public class Shooting2 : MonoBehaviour {
         charge_time = charge_time * 60;//フレームでは無く、秒数になる
         Charge_Time = charge_time;//初期化用に格納する。
 
-        Stopflg = false;//falseのときは特になにもないが、trueになるとボタン操作を受付なくなる
+        //Stopflg = false;//falseのときは特になにもないが、trueになるとボタン操作を受付なくなる
 
         //ユニティちゃんの Animator にアクセスする
         animator = GetComponent<Animator>();
