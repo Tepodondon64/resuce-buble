@@ -542,6 +542,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5544f71c52649b042a8338f0400a623d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syouka: {fileID: 114621537550132698, guid: fb5e4c98ca6944246803c2c97bf2f39e, type: 2}
+  EnemyTime: 0.2
+  maxSpeed: 120
+  EnemyScale: {x: 175, y: 175, z: 175}
 --- !u!114 &114123090754721422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -687,6 +691,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   speed: 1
+  m_rushprefab: {fileID: 114919797091377156, guid: 82018cfbc4f691b4f9fb452b8ffc140f,
+    type: 2}
+  offsetx: -1
+  offsety: 1.8
+  offsetz: 1.3
 --- !u!114 &114656482663557364
 MonoBehaviour:
   m_ObjectHideFlags: 1
