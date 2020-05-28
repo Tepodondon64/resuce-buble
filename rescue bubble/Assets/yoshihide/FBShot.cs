@@ -62,7 +62,15 @@ public class FBShot : MonoBehaviour {
             //ファイアボール発射時に音を再生する
             audioSource.PlayOneShot(FBShotSE);
         }
+        else if(targetTime > currentTime)
+        {
+            animator.SetBool("Rou Attack", false);
+        }
     }
+
+    
+        
+    
     //public GameObject enemyShellPrefab;
     //public float shotSpeed;
     ////public AudioClip shotSound;
