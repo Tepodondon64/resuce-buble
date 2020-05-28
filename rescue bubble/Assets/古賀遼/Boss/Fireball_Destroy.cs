@@ -10,32 +10,19 @@ public class Fireball_Destroy : MonoBehaviour {
         Invoke("Destroy", 10);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        
+        if (collision.gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
+
         if (collision.gameObject.tag == "Map")
         {
             Destroy(this.gameObject);
-            Destroy(gameObject);
-            
         }
 
-        if (collision.gameObject.tag == "Bullet") 
-        {
-            FBHP--;
-            if (FBHP == 0)
-            {
-                Destroy(this.gameObject);
-                FBHP = 3;
-            }
-        }
 
-        if (collision.gameObject.tag == "ChargeBullet")
-        {
-            Destroy(this.gameObject);
-        }
-
-        
     }
 
     void Destroy()

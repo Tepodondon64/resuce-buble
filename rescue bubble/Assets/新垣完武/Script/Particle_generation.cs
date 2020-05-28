@@ -16,13 +16,21 @@ public class Particle_generation : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet")   //通常泡が当たったとき
         {
             GameObject particle = Instantiate(ParticlePrefabs) as GameObject;//パーティクルのプレハブのクローンを生成している
             Vector3 hitPos = other.ClosestPointOnBounds(this.transform.position);//オブジェクトの当たった場所の状態を取得している
             particle.transform.position = hitPos;//パーティクルの発生地点をオブジェクトが当たった場所にしている。
           //  Destroy(other.gameObject);
         }
+
+        //if (other.gameObject.tag == "ChargeBullet")   //チャージ泡が当たったとき
+        //{
+        //    GameObject particle = Instantiate(ParticlePrefabs) as GameObject;//パーティクルのプレハブのクローンを生成している
+        //    Vector3 hitPos = other.ClosestPointOnBounds(this.transform.position);//オブジェクトの当たった場所の状態を取得している
+        //    particle.transform.position = hitPos;//パーティクルの発生地点をオブジェクトが当たった場所にしている。
+        //    //  Destroy(other.gameObject);
+        //}
     }
 
 	// Use this for initialization

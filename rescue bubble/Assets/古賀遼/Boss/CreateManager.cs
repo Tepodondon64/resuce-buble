@@ -18,6 +18,9 @@ public class CreateManager : MonoBehaviour
 
     public EnemyStatus enemystatus;
 
+    //プレイヤーのオブジェクトをここに入れる。
+    public GameObject Player_obj;
+
     //public float speed = 1000;
     // 初期化
     void Start()
@@ -25,12 +28,15 @@ public class CreateManager : MonoBehaviour
         
         target = GameObject.Find("Player").transform;
         StartCoroutine ("ChangeColor1");
+        //StartCoroutine ("ChangeColor4");
     }
 
     void Update()
     {
         //ボスのHPを毎回取る
         eCount = enemystatus.enemy_hp;
+
+        Vector3 Player_pos = Player_obj.transform.position;
 
     }
 
@@ -49,6 +55,8 @@ public class CreateManager : MonoBehaviour
         yield return new WaitForSeconds(10);
         Debug.Log(eCount); //5
 
+        Vector3 Player_pos = Player_obj.transform.position;
+
         if (eCount < 500)
         {
             if(P == 0)
@@ -60,7 +68,16 @@ public class CreateManager : MonoBehaviour
         }else{
             //もう一つのコルーチンを実行する
             //StartCoroutine("ChangeColor2");
-            StartCoroutine("ChangeColor3");
+            //StartCoroutine("ChangeColor3");
+
+            if (Player_pos.z > 9 && Player_pos.x < 20 && Player_pos.x > -15)
+            {
+                StartCoroutine("ChangeColor3");
+            }
+            else
+            {
+                StartCoroutine("ChangeColor1");
+            }
         }
     }
 
@@ -87,9 +104,37 @@ public class CreateManager : MonoBehaviour
         //5秒停止
         yield return new WaitForSeconds(15);
 
+        Vector3 Player_pos = Player_obj.transform.position;
+
         //もう一つのコルーチンを実行する
-        StartCoroutine("ChangeColor1");
+        //StartCoroutine("ChangeColor1");
         Debug.Log(eCount); //5
+
+        if (eCount < 500)
+        {
+            if (P == 0)
+            {
+                StartCoroutine("ChangeColor4");
+                P++;
+            }
+
+        }
+        else
+        {
+            //もう一つのコルーチンを実行する
+            //StartCoroutine("ChangeColor2");
+            //StartCoroutine("ChangeColor3");
+
+            if (Player_pos.z > 9 && Player_pos.x < 20 && Player_pos.x > -15)
+            {
+                StartCoroutine("ChangeColor3");
+            }
+            else
+            {
+                StartCoroutine("ChangeColor1");
+            }
+        }
+
     }
 
     IEnumerator ChangeColor4()
@@ -101,7 +146,17 @@ public class CreateManager : MonoBehaviour
 
         yield return new WaitForSeconds(10);
 
-        StartCoroutine("ChangeColor3");
+        Vector3 Player_pos = Player_obj.transform.position;
+
+        if (Player_pos.z > 9 && Player_pos.x < 20 && Player_pos.x > -15)
+        {
+            StartCoroutine("ChangeColor3");
+        }
+        else
+        {
+            StartCoroutine("ChangeColor1");
+        }
+
     }
 
     //void Update()
@@ -175,7 +230,7 @@ public class CreateManager : MonoBehaviour
     {
         //火災旋風の呼び出し
         GameObject obj9 = (GameObject)Resources.Load("senpu");
-        GameObject instance9 = (GameObject)Instantiate(obj9, new Vector3(0, -0.5f, 0), Quaternion.identity);
+        GameObject instance9 = (GameObject)Instantiate(obj9, new Vector3(0, -0.5f, 27), Quaternion.identity);
 
         Destroy(instance9, 10f);
         Invoke("mark", 5);

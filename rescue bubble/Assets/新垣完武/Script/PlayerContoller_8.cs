@@ -30,7 +30,7 @@ public class PlayerContoller_8 : MonoBehaviour {
 
         rb = GetComponent<Rigidbody>();
         transform.localRotation = Quaternion.Euler(0f, 0f, 0f);//画像の傾き
-        Stopflg = false;//falseのときは特になにもないが、trueになるとボタン操作を受付なくなる
+       // Stopflg = false;//falseのときは特になにもないが、trueになるとボタン操作を受付なくなる
 
         //Playerの Animator にアクセスする
         animator = GetComponent<Animator>();
