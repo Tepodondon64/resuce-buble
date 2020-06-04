@@ -101,7 +101,7 @@ public class moeru : MonoBehaviour {
             {
                 GetComponent<CapsuleCollider>().enabled = false;
                 this.gameObject.tag = "Burn";
-                //GetComponent<Renderer>().material.color = Color.black;
+                gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 0);
                 Fire.SetActive(true);
             }
             this.StayEnemy = 0;
