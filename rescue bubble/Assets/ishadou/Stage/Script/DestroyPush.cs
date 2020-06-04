@@ -9,6 +9,9 @@ public class DestroyPush : MonoBehaviour
     public float enemyhp = 10;
     public GameObject Push;
     public GameObject Fire;
+    public AudioClip FODestroy;
+
+    AudioSource audiosource;
 
     private float bullet_power = 1;//通常弾の攻撃力
     private float chargebullet_power = 10;//チャージショットの攻撃力
@@ -23,6 +26,7 @@ public class DestroyPush : MonoBehaviour
         FireScale.x = 0.5f;
         FireScale.y = 1.0f;
         FireScale.z = 0.5f;
+        audiosource = GetComponent<AudioSource>(); 
         // enemyhp = 1;
         // Debug.Log(enemyhp);//10
     }
@@ -40,6 +44,7 @@ public class DestroyPush : MonoBehaviour
             FireScale.z -= 0.05f;
             if (enemyhp <= 0)
             {
+                audiosource.PlayOneShot(FODestroy);
                 this.tag = "Bubble";
                 GetComponent<CapsuleCollider>().enabled = false;
             }
@@ -50,6 +55,7 @@ public class DestroyPush : MonoBehaviour
             enemyhp = enemyhp - chargebullet_power;
             if (enemyhp <= 0)
             {
+                audiosource.PlayOneShot(FODestroy);
                 this.tag = "Bubble";
                 GetComponent<CapsuleCollider>().enabled = false;
             }
@@ -62,10 +68,12 @@ public class DestroyPush : MonoBehaviour
         //Transform myTransform = this.transform;
         if (Fire.gameObject != null)
         {
+            
             Fire.transform.localScale = new Vector3(FireScale.x, FireScale.y, FireScale.z);
         }
         if (enemyhp <= 0)
         {
+            
             Destroy(Fire.gameObject);
             Destroy(Push);
         }
