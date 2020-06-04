@@ -346,7 +346,7 @@ public class CreateManager : MonoBehaviour
 
         //if()
 
-        animator.SetTrigger("anipan");
+        //animator.SetTrigger("anipan");
         //右肩
         Transform RTATransform1 = GameObject.Find("Rightshoulder").transform;
 
@@ -451,7 +451,7 @@ public class CreateManager : MonoBehaviour
         GameObject syoyu = (GameObject)Resources.Load("ShockWave2");
         GameObject syosyo = (GameObject)Instantiate(syoyu, ssss, Quaternion.identity);
 
-        audioSource.PlayOneShot(panti);
+        //audioSource.PlayOneShot(panti);
 
         SWI = false;
     }
