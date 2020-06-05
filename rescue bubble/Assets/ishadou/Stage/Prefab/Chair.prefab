@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7a28783da099548a46d806aca1d4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SyoukaSE: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
   Fire: {fileID: 1984791083588184}
 --- !u!136 &136457380074285684
 CapsuleCollider:
