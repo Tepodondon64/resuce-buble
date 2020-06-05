@@ -23,15 +23,17 @@ public class Bossmodo : MonoBehaviour
 
     }
 
+    //パンチ
     IEnumerator ChangeColor1()
     {
         yield return new WaitForSeconds(3);
 
         Invoke("ugomemo", 1);
+        Invoke("soku", 3.5f);
 
         yield return new WaitForSeconds(7);
 
-        StartCoroutine("ChangeColor2");
+        StartCoroutine("ChangeColor1");
     }
 
     IEnumerator ChangeColor2()
@@ -55,6 +57,15 @@ public class Bossmodo : MonoBehaviour
         aniani.SetTrigger("anifb");
     }
 
+    void soku()
+    {
+        Vector3 sss = GameObject.Find("pasted__pasted__pCube7").transform.position;
+        Vector3 ssss = new Vector3(sss.x, sss.y, sss.z);
+
+        GameObject syoyu = (GameObject)Resources.Load("ShockWave2");
+        GameObject syosyo = (GameObject)Instantiate(syoyu, ssss, Quaternion.identity);
+
+    }
 
     void OnTriggerEnter(Collider t)//FB
     {
