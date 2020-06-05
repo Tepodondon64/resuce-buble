@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moeru : MonoBehaviour {
+public class moerubar : MonoBehaviour {
 
     private int StayEnemy = 0;
     private float TimeOut = 1.0f;
@@ -17,7 +17,8 @@ public class moeru : MonoBehaviour {
     private float AfterX, AfterY, AfterZ;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         if (this.gameObject.CompareTag("Easy"))
         {
             ObjectHP = 120;
@@ -45,7 +46,8 @@ public class moeru : MonoBehaviour {
         {
             this.StayEnemy = 1;
         }
-        if (other.gameObject.tag == "Burn"){
+        if (other.gameObject.tag == "Burn")
+        {
             this.StayEnemy = 1;
         }
     }
@@ -64,7 +66,7 @@ public class moeru : MonoBehaviour {
                         , scale.y -= AfterY
                         , scale.z -= AfterZ);
                 }
-                else if(FireHP<=0)
+                else if (FireHP <= 0)
                 {
                     Fire.SetActive(false);
                     this.gameObject.tag = "lost";
@@ -81,21 +83,22 @@ public class moeru : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (this.gameObject.tag == "lost")
         {
             this.StayEnemy = 0;
         }
         if (StayEnemy == 1)
         {
-            
+
             if (this.ObjectHP > 0)
             {
                 Timer += Time.deltaTime;
                 if (Timer >= TimeOut)
                 {
                     Timer = 0.0f;
-                    this.ObjectHP -= 30;
+                    this.ObjectHP -= 60;
                     Debug.Log(ObjectHP);
                 }
             }
@@ -103,7 +106,6 @@ public class moeru : MonoBehaviour {
             {
                 GetComponent<CapsuleCollider>().enabled = false;
                 this.gameObject.tag = "Burn";
-                gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 0);
                 Fire.SetActive(true);
             }
             this.StayEnemy = 0;
