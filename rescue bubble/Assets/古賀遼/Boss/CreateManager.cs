@@ -7,7 +7,9 @@ public class CreateManager : MonoBehaviour
 {
     public Transform target;
     public int BOSSHP = 10;
-    
+
+    public Transform playa;
+
     bool witch = false;
 
     int eCount;
@@ -18,6 +20,21 @@ public class CreateManager : MonoBehaviour
 
     public EnemyStatus enemystatus;
 
+    bool SWI = false;
+
+    public AudioClip furikaburu;
+    public AudioClip panti;
+    public AudioClip maenidasu;
+    public AudioClip kasai;
+
+
+    AudioSource audioSource;
+
+    public float volume;
+
+    //アニメーション
+    private Animator animator;
+    
     //プレイヤーのオブジェクトをここに入れる。
     public GameObject Player_obj;
 
@@ -25,10 +42,13 @@ public class CreateManager : MonoBehaviour
     // 初期化
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+
         target = GameObject.Find("Player").transform;
-        StartCoroutine ("ChangeColor1");
+        StartCoroutine ("ChangeColor3");
         //StartCoroutine ("ChangeColor4");
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -38,31 +58,44 @@ public class CreateManager : MonoBehaviour
 
         Vector3 Player_pos = Player_obj.transform.position;
 
+        if (SWI == true)
+        {
+            //プレイヤーの方を向く
+            Vector3 target = playa.position;
+            target.y = this.transform.position.y;
+            this.transform.LookAt(target);
+        }
+
     }
 
     IEnumerator ChangeColor1()
     {
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(2);
 
         // プレハブを元にオブジェクトを生成する
         Invoke("Call", 2f);
         Invoke("kaenud", 1f);
-        
+
         Debug.Log("これはできてる");
         Debug.Log(eCount); //5
 
+        SWI = true;
+
+        yield return new WaitForSeconds(11);
+        SWI = false;
         //5秒停止
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(4);
         Debug.Log(eCount); //5
 
         Vector3 Player_pos = Player_obj.transform.position;
 
-        if (eCount < 500)
+        if (eCount < 2500)
         {
             if(P == 0)
             {
                 StartCoroutine("ChangeColor4");
                 P++;
+                SWI = false;
             }
 
         }else{
@@ -73,33 +106,37 @@ public class CreateManager : MonoBehaviour
             if (Player_pos.z > 9 && Player_pos.x < 20 && Player_pos.x > -15)
             {
                 StartCoroutine("ChangeColor3");
+                SWI = false;
             }
             else
             {
                 StartCoroutine("ChangeColor1");
+                SWI = false;
             }
         }
     }
 
-    IEnumerator ChangeColor2()
-    {
+    //IEnumerator ChangeColor2()
+    //{
 
-        // プレハブを元にオブジェクトを生成する
-        Invoke("Call", 5f);
+    //    // プレハブを元にオブジェクトを生成する
+    //    Invoke("Call", 5f);
 
-        //5秒停止
-        yield return new WaitForSeconds(10);
+    //    //5秒停止
+    //    yield return new WaitForSeconds(10);
 
-        //もう一つのコルーチンを実行する
-        StartCoroutine("ChangeColor3");
-        Debug.Log(eCount); //5
-    }
+    //    //もう一つのコルーチンを実行する
+    //    StartCoroutine("ChangeColor3");
+    //    Debug.Log(eCount); //5
+    //}
 
     IEnumerator ChangeColor3()
     {
 
         // プレハブを元にオブジェクトを生成する
         Invoke("yobi", 5f);
+
+        
 
         //5秒停止
         yield return new WaitForSeconds(15);
@@ -110,12 +147,13 @@ public class CreateManager : MonoBehaviour
         //StartCoroutine("ChangeColor1");
         Debug.Log(eCount); //5
 
-        if (eCount < 500)
+        if (eCount < 2500)
         {
             if (P == 0)
             {
                 StartCoroutine("ChangeColor4");
                 P++;
+                SWI = false;
             }
 
         }
@@ -128,10 +166,12 @@ public class CreateManager : MonoBehaviour
             if (Player_pos.z > 9 && Player_pos.x < 20 && Player_pos.x > -15)
             {
                 StartCoroutine("ChangeColor3");
+                SWI = false;
             }
             else
             {
                 StartCoroutine("ChangeColor1");
+                SWI = false;
             }
         }
 
@@ -144,17 +184,29 @@ public class CreateManager : MonoBehaviour
         Invoke("SENP", 0);
         Invoke("mark", 0);
 
-        yield return new WaitForSeconds(10);
+
+        Transform lasthoko = GameObject.Find("Boss2.4").transform;
+
+        Vector3 kasahoko = GameObject.Find("Boss2.4").transform.localEulerAngles;
+        kasahoko.x = 0.0f;
+        kasahoko.y = -180.0f;
+        kasahoko.z = 0.0f;
+
+        lasthoko.localEulerAngles = kasahoko;
+
+        yield return new WaitForSeconds(15);
 
         Vector3 Player_pos = Player_obj.transform.position;
 
         if (Player_pos.z > 9 && Player_pos.x < 20 && Player_pos.x > -15)
         {
             StartCoroutine("ChangeColor3");
+            SWI = false;
         }
         else
         {
             StartCoroutine("ChangeColor1");
+            SWI = false;
         }
 
     }
@@ -229,8 +281,10 @@ public class CreateManager : MonoBehaviour
     void SENP()
     {
         //火災旋風の呼び出し
-        GameObject obj9 = (GameObject)Resources.Load("senpu");
+        GameObject obj9 = (GameObject)Resources.Load("FireWhirlwind");
         GameObject instance9 = (GameObject)Instantiate(obj9, new Vector3(0, -0.5f, 27), Quaternion.identity);
+
+        audioSource.PlayOneShot(kasai);
 
         Destroy(instance9, 10f);
         Invoke("mark", 5);
@@ -240,7 +294,7 @@ public class CreateManager : MonoBehaviour
     {
         //予測呼び出し（四角）
         GameObject yotyou1 = (GameObject)Resources.Load("yosokusikaku");
-        GameObject yoyo1 = (GameObject)Instantiate(yotyou1, new Vector3(0, 1f, 0), Quaternion.identity);
+        GameObject yoyo1 = (GameObject)Instantiate(yotyou1, new Vector3(0, 1f, 6), Quaternion.identity);
 
         //予測呼び出し（丸）
         //GameObject yotyou2 = (GameObject)Resources.Load("yosokumaru");
@@ -257,11 +311,13 @@ public class CreateManager : MonoBehaviour
 
         Vector3 Rotation33 = GameObject.Find("Rightshoulder").transform.localEulerAngles;
         Rotation33.x = 90.0f;
-        Rotation33.y = 0.0f;
+        Rotation33.y = -180.0f;
         Rotation33.z = 0.0f;
         S++;
 
         RTATransform1.localEulerAngles = Rotation33;
+
+        audioSource.PlayOneShot(furikaburu);
 
         Invoke("kaend", 10);
     }
@@ -290,6 +346,7 @@ public class CreateManager : MonoBehaviour
 
         //if()
 
+        //animator.SetTrigger("anipan");
         //右肩
         Transform RTATransform1 = GameObject.Find("Rightshoulder").transform;
 
@@ -297,8 +354,8 @@ public class CreateManager : MonoBehaviour
         //if (Rotation33.x <90.0f)
         //if(S<18)
         //
-            Rotation33.x = 75.0f;
-            Rotation33.y = 50.0f;
+            Rotation33.x = 105.0f;
+            Rotation33.y = -70.0f;
             Rotation33.z = 0.0f;
             
         //}
@@ -334,6 +391,10 @@ public class CreateManager : MonoBehaviour
         RTATransform3.localEulerAngles = Rotation55;
 
         Invoke("PaPa", 5);
+
+        audioSource.PlayOneShot(furikaburu);
+
+        SWI = true;
     }
 
     void PaPa()
@@ -344,13 +405,13 @@ public class CreateManager : MonoBehaviour
         Vector3 Rotation33 = GameObject.Find("Rightshoulder").transform.localEulerAngles;
         //if (Rotation33.x <90.0f)
         //if(S<18)
-        //trans1.x += 0.0f;
+        trans1.x = 6.443245f;
         trans1.y = 9.0f;
         trans1.z = -2.0f;
 
         RTATransform1.localPosition = trans1;
 
-        Rotation33.x = 40.0f;
+        Rotation33.x = -40.0f;
         Rotation33.y = 0.0f;
         Rotation33.z = 0.0f;
         S++;
@@ -376,14 +437,23 @@ public class CreateManager : MonoBehaviour
         //体をひねる
         Transform RTATransform3 = GameObject.Find("Body").transform;
         Vector3 Rotation55 = GameObject.Find("Body").transform.localEulerAngles;
-        //if (Rotation33.x <90.0f)
-        //if (S < 18)
-        //{
         Rotation55.x = 0.0f;
         Rotation55.y = -12.0f;
         Rotation55.z = 0.0f;
 
         RTATransform3.localEulerAngles = Rotation55;
+
+        Vector3 sss = GameObject.Find("Righthand").transform.position;
+        Vector3 ssss = new Vector3(sss.x, sss.y, sss.z);
+
+        //tmp2 = new Vector3(tmp.x - 20, tmp.y, tmp.z);
+
+        GameObject syoyu = (GameObject)Resources.Load("ShockWave2");
+        GameObject syosyo = (GameObject)Instantiate(syoyu, ssss, Quaternion.identity);
+
+        //audioSource.PlayOneShot(panti);
+
+        SWI = false;
     }
 
     void modos()
@@ -394,7 +464,7 @@ public class CreateManager : MonoBehaviour
         Vector3 Rotation33 = GameObject.Find("Rightshoulder").transform.localEulerAngles;
         //if (Rotation33.x <90.0f)
         //if(S<18)
-        trans1.x = -6.443245f;
+        trans1.x = 6.443245f;
         trans1.y = 12.20356f;
         trans1.z = 0.5219421f;
 

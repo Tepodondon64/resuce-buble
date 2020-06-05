@@ -11,14 +11,20 @@ public class fireshoot : MonoBehaviour
     public int Time = 0;
     public int Size = 0;
     bool isCalledOnce = false;
+
     public AudioClip sound1;
     AudioSource audioSource;
+    public float volume;
 
     void Start()
     {
         target = GameObject.Find("Player").transform; //インスペクタから登録するのでいらない
         //this.transform.LookAt(target.transform);
         audioSource = GetComponent<AudioSource>();
+
+        //音量調整
+        audioSource.volume = volume;
+
     }
 
     void Update()
@@ -63,6 +69,7 @@ public class fireshoot : MonoBehaviour
         }
         //targetに向かって進む
         transform.position += transform.forward * speed;
+
 
     }
 }
