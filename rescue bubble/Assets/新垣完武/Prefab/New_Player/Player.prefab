@@ -4047,7 +4047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec1cfe280638b94ea4fb66f33776fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localGravity: {x: 0, y: -10, z: 0}
+  localGravity: {x: 0, y: -100, z: 0}
 --- !u!114 &114658353387397280
 MonoBehaviour:
   m_ObjectHideFlags: 1

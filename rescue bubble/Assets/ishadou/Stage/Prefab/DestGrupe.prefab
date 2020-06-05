@@ -657,6 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7a28783da099548a46d806aca1d4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SyoukaSE: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
   Fire: {fileID: 1228236621764892}
 --- !u!114 &114459249252623766
 MonoBehaviour:
@@ -669,6 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7a28783da099548a46d806aca1d4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SyoukaSE: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
   Fire: {fileID: 1678321632419356}
 --- !u!114 &114530318128513812
 MonoBehaviour:
@@ -681,6 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7a28783da099548a46d806aca1d4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SyoukaSE: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
   Fire: {fileID: 1299369799455022}
 --- !u!114 &114754416984154904
 MonoBehaviour:
@@ -709,6 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7a28783da099548a46d806aca1d4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SyoukaSE: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
   Fire: {fileID: 1082596271613342}
 --- !u!136 &136172292685996714
 CapsuleCollider:

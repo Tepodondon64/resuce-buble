@@ -335,6 +335,11 @@ Prefab:
       propertyPath: SyoukaSE
       value: 
       objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
+    - target: {fileID: 114241123458139984, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5da8a83ea03ef40439f16492e6b2f547, type: 2}
   m_IsPrefabParent: 0
@@ -27554,6 +27559,26 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 114459249252623766, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
+    - target: {fileID: 114957950683107634, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
+    - target: {fileID: 114241123458139984, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
+    - target: {fileID: 114530318128513812, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5da8a83ea03ef40439f16492e6b2f547, type: 2}
   m_IsPrefabParent: 0
@@ -28801,6 +28826,26 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 114241123458139984, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
+    - target: {fileID: 114459249252623766, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
+    - target: {fileID: 114957950683107634, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
+    - target: {fileID: 114530318128513812, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5da8a83ea03ef40439f16492e6b2f547, type: 2}
   m_IsPrefabParent: 0
@@ -38127,6 +38172,11 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114606373689466318, guid: 25b98ee21ee63564eafbe54d3f7f3d68,
+        type: 2}
+      propertyPath: localGravity.y
+      value: -100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25b98ee21ee63564eafbe54d3f7f3d68, type: 2}
@@ -53932,6 +53982,26 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 114459249252623766, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
+    - target: {fileID: 114957950683107634, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
+    - target: {fileID: 114241123458139984, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
+    - target: {fileID: 114530318128513812, guid: 5da8a83ea03ef40439f16492e6b2f547,
+        type: 2}
+      propertyPath: SyoukaSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5da8a83ea03ef40439f16492e6b2f547, type: 2}
   m_IsPrefabParent: 0
