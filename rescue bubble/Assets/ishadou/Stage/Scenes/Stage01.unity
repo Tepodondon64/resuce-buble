@@ -27862,6 +27862,11 @@ Prefab:
       propertyPath: m_Text
       value: 2020/05/28/18:39
       objectReference: {fileID: 0}
+    - target: {fileID: 114129427440098376, guid: d7fac056b364529478281c9f535afacf,
+        type: 2}
+      propertyPath: m_Text
+      value: 2020/6/5/18:30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7fac056b364529478281c9f535afacf, type: 2}
   m_IsPrefabParent: 0
@@ -58952,6 +58957,7 @@ GameObject:
   - component: {fileID: 1950719554}
   - component: {fileID: 1950719553}
   - component: {fileID: 1950719562}
+  - component: {fileID: 1950719563}
   m_Layer: 9
   m_Name: tonton (2)
   m_TagString: Enemy
@@ -59196,6 +59202,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParticlePrefabs: {fileID: 1064337068661728, guid: 39518d25829382e4a98ea65d5655f9b2,
     type: 2}
+--- !u!114 &1950719563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1950719552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c342d5053989d1440a836ef456fea24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ttarget: {fileID: 0}
+  _target: {fileID: 0}
+  second: 0
+  speed: 0
+  TossinSE2: {fileID: 0}
+  volume: 0
 --- !u!1 &1960016147
 GameObject:
   m_ObjectHideFlags: 0

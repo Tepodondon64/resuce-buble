@@ -1369,7 +1369,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4677011753988416, guid: cb7e54786f1daf74caf548245cb009e6, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.3420201
+      value: 0.29237175
       objectReference: {fileID: 0}
     - target: {fileID: 4677011753988416, guid: cb7e54786f1daf74caf548245cb009e6, type: 2}
       propertyPath: m_LocalRotation.y
@@ -1381,7 +1381,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4677011753988416, guid: cb7e54786f1daf74caf548245cb009e6, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9396927
+      value: 0.9563048
       objectReference: {fileID: 0}
     - target: {fileID: 4677011753988416, guid: cb7e54786f1daf74caf548245cb009e6, type: 2}
       propertyPath: m_RootOrder
@@ -1404,7 +1404,11 @@ Prefab:
     - target: {fileID: 114027713316421590, guid: cb7e54786f1daf74caf548245cb009e6,
         type: 2}
       propertyPath: cameraVec.y
-      value: 30
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677011753988416, guid: cb7e54786f1daf74caf548245cb009e6, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb7e54786f1daf74caf548245cb009e6, type: 2}
@@ -1519,6 +1523,11 @@ Prefab:
     - target: {fileID: 1848585625231268, guid: d7fac056b364529478281c9f535afacf, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114129427440098376, guid: d7fac056b364529478281c9f535afacf,
+        type: 2}
+      propertyPath: m_Text
+      value: 2020/6/5/18:30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7fac056b364529478281c9f535afacf, type: 2}
