@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 54099141219547148}
   - component: {fileID: 136974701926840622}
   - component: {fileID: 65457000903203600}
-  - component: {fileID: 114731700688137108}
+  - component: {fileID: 114228251704013750}
   m_Layer: 0
   m_Name: WoodenChair
   m_TagString: Easy
@@ -1116,7 +1116,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114731700688137108
+--- !u!114 &114228251704013750
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1124,10 +1124,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575284215397520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b7a28783da099548a46d806aca1d4e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ef51fee9afc40e40a283620801525f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fire: {fileID: 1923810253992570}
+  FODestroy: {fileID: 0}
+  Fire: {fileID: 0}
 --- !u!136 &136974701926840622
 CapsuleCollider:
   m_ObjectHideFlags: 1

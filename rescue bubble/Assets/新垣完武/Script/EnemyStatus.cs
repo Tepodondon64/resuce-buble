@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyStatus : MonoBehaviour, hidame//←hidameの解説は↓
 {
@@ -28,6 +29,7 @@ public class EnemyStatus : MonoBehaviour, hidame//←hidameの解説は↓
             if (Desflg == true)
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene("gameclear");
             }
             //Destroy(gameObject);
         }

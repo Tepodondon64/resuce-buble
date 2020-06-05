@@ -282,11 +282,14 @@ public class CreateManager : MonoBehaviour
     {
         //火災旋風の呼び出し
         GameObject obj9 = (GameObject)Resources.Load("FireWhirlwind");
-        GameObject instance9 = (GameObject)Instantiate(obj9, new Vector3(0, -0.5f, 27), Quaternion.identity);
-
+        if (obj9 != null)
+        {
+            GameObject instance9 = (GameObject)Instantiate(obj9, new Vector3(0, -0.5f, 27), Quaternion.identity);
+            Destroy(instance9, 10f);
+        }
         audioSource.PlayOneShot(kasai);
 
-        Destroy(instance9, 10f);
+        //Destroy(instance9, 10f);
         Invoke("mark", 5);
     }
 

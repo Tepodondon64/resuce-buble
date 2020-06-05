@@ -941,6 +941,8 @@ GameObject:
   - component: {fileID: 114059434962128388}
   - component: {fileID: 114862932754198814}
   - component: {fileID: 114373912543684042}
+  - component: {fileID: 114877017975186388}
+  - component: {fileID: 114658353387397280}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1103,7 +1105,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870571963343514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.575346, y: 0.5, z: -18.258411}
+  m_LocalPosition: {x: -36, y: 0.1, z: -31}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4747395349289178}
@@ -3551,7 +3553,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4045,7 +4047,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec1cfe280638b94ea4fb66f33776fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localGravity: {x: 0, y: -100, z: 0}
+  localGravity: {x: 0, y: -10, z: 0}
+--- !u!114 &114658353387397280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870571963343514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b090cdf387759504e9f3cdd35b25c98b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114735290013020492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4063,7 +4076,7 @@ MonoBehaviour:
   Stage1: 1
   Stage2: 0
   Stage3: 0
-  BossStage: 0
+  BossStage: 1
 --- !u!114 &114824730529808242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4092,6 +4105,17 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114862932754198814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870571963343514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b090cdf387759504e9f3cdd35b25c98b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114877017975186388
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -50577,8 +50601,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -164.8, y: -131.9}
-  m_SizeDelta: {x: 83.6, y: 38}
+  m_AnchoredPosition: {x: -194.6, y: -131.9}
+  m_SizeDelta: {x: 62.5, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224197088929041442
 RectTransform:
