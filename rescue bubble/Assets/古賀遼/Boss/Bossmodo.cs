@@ -60,7 +60,7 @@ public class Bossmodo : MonoBehaviour
     void soku()
     {
         Vector3 sss = GameObject.Find("pasted__pasted__pCube7").transform.position;
-        Vector3 ssss = new Vector3(sss.x, sss.y, sss.z);
+        Vector3 ssss = new Vector3(sss.x, sss.y = 1, sss.z);
 
         GameObject syoyu = (GameObject)Resources.Load("ShockWave2");
         GameObject syosyo = (GameObject)Instantiate(syoyu, ssss, Quaternion.identity);
