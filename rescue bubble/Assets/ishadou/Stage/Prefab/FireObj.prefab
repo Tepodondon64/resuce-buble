@@ -2792,7 +2792,7 @@ MonoBehaviour:
   enemyhp: 10
   Push: {fileID: 0}
   Fire: {fileID: 1616115867077706}
-  FODestroy: {fileID: 8300000, guid: c0560511853b5c34396a4bf22f52fb98, type: 3}
+  FODestroy: {fileID: 8300000, guid: 57274c7c769474043b41a630fce4a8e2, type: 3}
   SP_power: 0
 --- !u!136 &136149548178531504
 CapsuleCollider:

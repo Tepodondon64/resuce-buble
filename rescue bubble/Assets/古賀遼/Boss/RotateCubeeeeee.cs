@@ -9,8 +9,16 @@ public class RotateCubeeeeee : MonoBehaviour
     public int SizeY = 0;
     public int Count = 0;
 
+    AudioSource audioSource;
+
+    public AudioClip senp;
+
+    public float volume;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        Invoke("kasaion", 5);
     }
     void Update()
     {
@@ -32,17 +40,21 @@ public class RotateCubeeeeee : MonoBehaviour
         Transform myTransform = this.transform;
 
         Vector3 loc = myTransform.localScale;
+        Vector3 pos = myTransform.position;
+
         //if (SizeY<500)
-        if(loc.y<50f)
+        if (loc.y<50f)
         {
             //loc.x += 0.1f;
             loc.y += 0.5f;
+            pos.y += 0.25f;
             //loc.z += 0.1f;
 
             SizeY += 1;
         }
-        Invoke("wide", 5);
+        Invoke("wide", 7);
         myTransform.localScale = loc;  // 座標を設定
+        myTransform.position = pos;
 
         //speed += 0.5f;
     }
@@ -50,18 +62,55 @@ public class RotateCubeeeeee : MonoBehaviour
     void wide()
     {
         Transform myTransform = this.transform;
+
         Vector3 loc = myTransform.localScale;
-        if (SizeXZ < 4)
+        Vector3 pos = myTransform.position;
+
+        if(loc.x < 80)
         {
-            loc.x += 0.1f*speed;
-            loc.z += 0.1f*speed;
-            SizeXZ += 1;
+            loc.x += 0.1f * speed;
+            
         }
+
+        if(loc.z < 60)
+        {
+            loc.z += 0.1f * speed;
+            pos.z -= 0.05f * speed;
+        }
+
+        
+
+        Invoke("weeei",2);
         myTransform.localScale = loc;  // 座標を設定
+        myTransform.position = pos;
+
+        
+    }
+
+    void weeei()
+    {
+        GameObject kabe1 = GameObject.Find("safety_block1");
+        GameObject kabe2 = GameObject.Find("safety_block2");
+        GameObject kabe3 = GameObject.Find("safety_block3");
+        GameObject kabe4 = GameObject.Find("safety_block4");
+        GameObject kabe5 = GameObject.Find("safety_block5");
+
+        Destroy(kabe1);
+        Destroy(kabe2);
+        Destroy(kabe3);
+        Destroy(kabe4);
+        Destroy(kabe5);
+
+    }
+
+    void kasaion()
+    {
+        audioSource.PlayOneShot(senp);
     }
 
     void Destroy()
     {
         Destroy(this.gameObject);
     }
+
 }

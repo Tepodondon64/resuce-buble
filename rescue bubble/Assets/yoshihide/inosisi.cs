@@ -11,7 +11,7 @@ public class inosisi : MonoBehaviour {
     private float currentTime = 0;
     //public Material material;
     public Transform _target;
-    private AttackMotion AM;
+    
     private inosisi ino;
     private EnemyStatus ES;
     private Animator animator;
@@ -35,7 +35,7 @@ public class inosisi : MonoBehaviour {
     void Start () {
         ttarget = GameObject.Find("Player").transform; ;
         StartCoroutine("tosin1");
-        AM = gameObject.GetComponent<AttackMotion>();
+        
         rb = GetComponent<Rigidbody>();
         ino = GetComponent<inosisi>();
         animator = GetComponent<Animator>();

@@ -26,6 +26,8 @@ public class PlayerHP_2 : MonoBehaviour {
     private int Prx = -5;
 
     private bool NoUpdateflg;
+    private bool NoUseFadeOutflg;   //ゲームオブジェクトの「fadeOutImage」がシーン内に存在しない場合にtrueになる
+
 
     Transform player;   //プレイヤーのトランスフォーム取得
     //bool knock_back;   //←こちら、Playerの子オブジェクトのBack_collisionのスクリプトのbackTriggerを入れるための変数です。
@@ -45,12 +47,15 @@ public class PlayerHP_2 : MonoBehaviour {
     //外部のオブジェクトを取得//
     GameObject time;
     GameObject FloorImage;
-
+    private GameObject DamageObject; //パーティクルを入れるための変数(無敵時間の間だけ表示させる)
     //Animator を入れる変数
     private Animator animator;
 
     void Start()
     {
+        DamageObject = transform.Find("Damage_effects").gameObject;//ダメージのパーティクルを入れる
+        DamageObject.SetActive(false);//ダメージのオブジェクトを非表示にする
+
         //外部のスクリプトの情報を取得
         shooting2 = GetComponent<Shooting2>();//Shooting2スクリプトの取得
         playerContoller_8 = GetComponent<PlayerContoller_8>();//PlayerContoller_7スクリプトの取得
@@ -58,8 +63,18 @@ public class PlayerHP_2 : MonoBehaviour {
         time = GameObject.Find("Time");//タイムの情報を取得する
         timeScript = time.GetComponent<TimeScript>();//TimeScriptスクリプトの取得
 
+        if (GameObject.Find("Image") != null)//シーン内に"Image"があれば通る
+        {
         FloorImage = GameObject.Find("Image");//FloorNameの子要素にあるイメージの情報を取得する
-        fadeOutImage = FloorImage.GetComponent<FadeOutImage>();//FadeOutImageスクリプトの取得
+            fadeOutImage = FloorImage.GetComponent<FadeOutImage>();//FadeOutImageスクリプトの取得
+            NoUseFadeOutflg = false;
+            NoUpdateflg = false;
+        }
+        else //シーン内に"Image"が無かったらnullなので通る
+        {
+            NoUseFadeOutflg = true;
+            NoUpdateflg = true;
+        }
 
         //Componentを取得
         audioSource = GetComponent<AudioSource>();//AudioのComponentを取得
@@ -74,8 +89,6 @@ public class PlayerHP_2 : MonoBehaviour {
         //Playerの Animator にアクセスする
         animator = GetComponent<Animator>();
 
-        NoUpdateflg = false;
-
     }
 
     void Update()
@@ -83,7 +96,10 @@ public class PlayerHP_2 : MonoBehaviour {
         DebugLog();
         Invincible();
         GameOver();
-        PlayerStop();
+        if (NoUseFadeOutflg == false)
+        {
+            PlayerStop();
+        }
         //if (Input.GetMouseButtonDown(1))
         //{
         //    SceneManager.LoadScene(3);
@@ -138,6 +154,7 @@ public class PlayerHP_2 : MonoBehaviour {
                 // PlayerMr.material.color = PlayerMr.material.color + new Color32(0, 0, 0, 100);
                 Invincibleflg = false;
                 InvincibleTime = Time;
+                DamageObject.SetActive(false);//ダメージのオブジェクトを非表示にする
             }
         }
         if (Invincibleflg == false)  //敵には当たってなければ
@@ -210,15 +227,14 @@ public class PlayerHP_2 : MonoBehaviour {
             {
                 //被ダメージのアニメーションを再生
                 animator.SetBool("Damageing", true);
-
-
+                //HPを１ずつ減少させる
+                HP -= 2;
                 OnDamageEffect();//この関数に移動
                 Invincibleflg = true;//無敵時間になるフラグオン
 
                 //ダメージを受けた時にSEを鳴らす
                 audioSource.PlayOneShot(DamageSE);
-                //HPを１ずつ減少させる
-                HP -= 2;
+                
             }
 
 
@@ -227,15 +243,14 @@ public class PlayerHP_2 : MonoBehaviour {
             {
                 //被ダメージのアニメーションを再生
                 animator.SetBool("Damageing", true);
-
-
+                //HPを１ずつ減少させる
+                HP -= 1;
                 OnDamageEffect();//この関数に移動
                 Invincibleflg = true;//無敵時間になるフラグオン
 
                 //ダメージを受けた時にSEを鳴らす
                 audioSource.PlayOneShot(DamageSE);
-                //HPを１ずつ減少させる
-                HP -= 1;
+               
             }
 
             //もしもぶつかったFBのTagが"FB"であったならば（条件）
@@ -243,14 +258,14 @@ public class PlayerHP_2 : MonoBehaviour {
             {
                 //被ダメージのアニメーションを再生
                 animator.SetBool("Damageing", true);
-
+                //HPを1ずつ減少させる
+                HP -= 2;
                 OnDamageEffect();//この関数に移動
                 Invincibleflg = true;//無敵時間になるフラグオン
 
                 //ダメージを受けた時にSEを鳴らす
                 audioSource.PlayOneShot(DamageSE);
-                //HPを1ずつ減少させる
-                HP -= 2;
+               
             }
 
         }
@@ -267,16 +282,15 @@ public class PlayerHP_2 : MonoBehaviour {
             {
                 //被ダメージのアニメーションを再生
                 animator.SetBool("Damageing", true);
-
-
+                //HPを１ずつ減少させる
+                HP -= 2;
                 OnDamageEffect();//この関数に移動
                 Invincibleflg = true;//無敵時間になるフラグオン
 
                 //ダメージを受けた時にSEを鳴らす
                 audioSource.PlayOneShot(DamageSE);
 
-                //HPを１ずつ減少させる
-                HP -= 2;
+                
             }
 
             //もしもぶつかった相手のTagが"Burn"であったならば（条件） 
@@ -284,15 +298,14 @@ public class PlayerHP_2 : MonoBehaviour {
             {
                 //被ダメージのアニメーションを再生
                 animator.SetBool("Damageing", true);
-
-
+                //HPを１ずつ減少させる
+                HP -= 1;
                 OnDamageEffect();//この関数に移動
                 Invincibleflg = true;//無敵時間になるフラグオン
 
                 //ダメージを受けた時にSEを鳴らす
                 audioSource.PlayOneShot(DamageSE);
-                //HPを１ずつ減少させる
-                HP -= 1;
+                
             }
         }
     }
@@ -304,15 +317,43 @@ public class PlayerHP_2 : MonoBehaviour {
         {
             //被ダメージのアニメーションを再生
             animator.SetBool("Damageing", true);
-
+            //HPを1ずつ減少させる
+            HP -= 2;
             OnDamageEffect();//この関数に移動
             Invincibleflg = true;//無敵時間になるフラグオン
 
             //ダメージを受けた時にSEを鳴らす
             audioSource.PlayOneShot(DamageSE);
-            //HPを1ずつ減少させる
-            HP -= 2;
+           
         }
+
+        //もしもぶつかった火災旋風のTagが"FS"であったならば（条件）
+        if (t.gameObject.tag == "FS" && Invincibleflg == false)
+        {
+            //被ダメージのアニメーションを再生
+            animator.SetBool("Damageing", true);
+            //HPを8ずつ減少させる
+            HP -= 8;
+            OnDamageEffect();//この関数に移動
+            Invincibleflg = true;//無敵時間になるフラグオン
+            //ダメージを受けた時にSEを鳴らす
+            audioSource.PlayOneShot(DamageSE);
+            
+        }
+        //もしもぶつかった火災旋風のTagが"FS"であったならば（条件）
+        if (t.gameObject.tag == "SW" && Invincibleflg == false)
+        {
+            //被ダメージのアニメーションを再生
+            animator.SetBool("Damageing", true);
+            //HPを2ずつ減少させる
+            HP -= 2;
+            OnDamageEffect();//この関数に移動
+            Invincibleflg = true;//無敵時間になるフラグオン
+            //ダメージを受けた時にSEを鳴らす
+            audioSource.PlayOneShot(DamageSE);
+            
+        }
+
 
     }
 
@@ -322,6 +363,14 @@ public class PlayerHP_2 : MonoBehaviour {
     {
         shooting2.Stopflg = true;   //泡の発射を止める
         playerContoller_8.Stopflg = true;   //プレイヤーの動きを止める
+        //if (HP > 0) //HPが0よりも多ければ通る
+        //{
+        //    DamageObject.SetActive(true);//ダメージのオブジェクトを表示する
+        //}
+        //else if (HP <= 0) //HPが0よりも多ければ通る
+        //{
+        //    DamageObject.SetActive(false);//ダメージのオブジェクトを表示する
+        //}
 //        iTween.MoveTo(gameObject, iTween.Hash(
 //"position", transform.position - (transform.forward * 1.2f - transform.up * 0f),
 //                "time", g_time,
@@ -337,20 +386,39 @@ public class PlayerHP_2 : MonoBehaviour {
 
     void ExitStopShoot()   //撃てない状態から
     {
-        if (HP > 0 && timeScript.timeEndflg == false || fadeOutImage.FadeEndflg == true) //HPが0よりも多ければ通る
+        if (HP > 0 && timeScript.timeEndflg == false) //HPが0よりも多ければ通る
         {
             shooting2.Stopflg = false;  //泡が撃てるようにする
         }
+        if (HP > 0) //HPが0よりも多ければ通る
+        {
+            DamageObject.SetActive(true);//ダメージのオブジェクトを表示する
+        }
+        //if (NoUseFadeOutflg == false)
+        //{
+        //    if (fadeOutImage.FadeEndflg == true)    //FadeOutが終われば通る
+        //    {
+        //        shooting2.Stopflg = false;  //泡が撃てるようにする
+        //    }
+        //}
        //被ダメージのアニメーションをオフ
        animator.SetBool("Damageing", false);
     }
 
     void ExitStopMove()   //動けない状態から
     {
-        if (HP > 0 && timeScript.timeEndflg == false || fadeOutImage.FadeEndflg == true) //HPが0よりも多ければ通る
+        if (HP > 0 && timeScript.timeEndflg == false) //HPが0よりも多ければ通る
         {
             playerContoller_8.Stopflg = false;  //プレイヤーが動けるようにする
         }
+
+        //if (NoUseFadeOutflg == false)
+        //{
+        //    if (fadeOutImage.FadeEndflg == true)    //FadeOutが終われば通る
+        //    {
+        //        playerContoller_8.Stopflg = false;  //プレイヤーが動けるようにする
+        //    }
+        //}
     }
 
     void GoToGameOver()

@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 114656482663557364}
   - component: {fileID: 114608631557829380}
   - component: {fileID: 82436307434213870}
+  - component: {fileID: 114922095028825690}
   m_Layer: 9
   m_Name: tonton (1)
   m_TagString: Enemy
@@ -1162,6 +1163,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8e0b3862c3428409fea04a4e332a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114922095028825690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1470635498652088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8e2fab4195344f966f16fe2c44da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticlePrefabs: {fileID: 1064337068661728, guid: 39518d25829382e4a98ea65d5655f9b2,
+    type: 2}
 --- !u!114 &114980706253234594
 MonoBehaviour:
   m_ObjectHideFlags: 1
