@@ -166,7 +166,6 @@ GameObject:
   - component: {fileID: 95248412022092204}
   - component: {fileID: 54644171423802250}
   - component: {fileID: 65963394258447452}
-  - component: {fileID: 114123090754721422}
   - component: {fileID: 114121701676890654}
   - component: {fileID: 114656482663557364}
   - component: {fileID: 114608631557829380}
@@ -381,7 +380,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1470635498652088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.38, y: 0.17, z: -30}
+  m_LocalPosition: {x: -5.358012, y: 9.86648e-17, z: -31.10427}
   m_LocalScale: {x: 150, y: 150, z: 150}
   m_Children:
   - {fileID: 4858987412212354}
@@ -963,20 +962,6 @@ MonoBehaviour:
   EnemyTime: 0.2
   maxSpeed: 120
   EnemyScale: {x: 175, y: 175, z: 175}
---- !u!114 &114123090754721422
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1470635498652088}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d54d9333f1d7e264692c614c80fd2106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  span: 1
-  span2: 2
-  material: {fileID: 0}
 --- !u!114 &114264845501946910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1106,7 +1091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c342d5053989d1440a836ef456fea24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ttarget: {fileID: 0}
   _target: {fileID: 0}
   second: 0
   speed: 0.2
