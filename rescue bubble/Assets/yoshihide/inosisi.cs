@@ -5,7 +5,7 @@ using UnityEngine;
 public class inosisi : MonoBehaviour {
 
     GameObject Player;
-    public Transform ttarget;
+    private Transform ttarget;
 
     private float targetTime = 6.0f;
     private float currentTime = 0;
@@ -118,7 +118,7 @@ public class inosisi : MonoBehaviour {
                 second = 0;
                 ino.enabled = false;
                 
-                //animator.SetBool("tossin", false);
+                animator.SetBool("tossin", false);
             }
             //tosinnn = false;
         }
