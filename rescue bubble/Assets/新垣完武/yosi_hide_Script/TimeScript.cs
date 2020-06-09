@@ -27,18 +27,18 @@ public class TimeScript : MonoBehaviour {
 	}
 	
 	void Update () {
-        if ((/*Input.GetButtonDown("Fire3") ||*/ Input.GetKeyDown(KeyCode.T)))//キーボードのTキーを押すと時間を操れる
-        { 
+        //if ((/*Input.GetButtonDown("Fire3") ||*/ Input.GetKeyDown(KeyCode.T)))//キーボードのTキーを押すと時間を操れる
+        //{ 
 
-            if(stoptime_flg == false)
-            {
-                stoptime_flg = true;//時間を止める
-            }
-            else if (stoptime_flg == true)
-            {
-                stoptime_flg = false;//時間が動きだす
-            }
-        }
+        //    if(stoptime_flg == false)
+        //    {
+        //        stoptime_flg = true;//時間を止める
+        //    }
+        //    else if (stoptime_flg == true)
+        //    {
+        //        stoptime_flg = false;//時間が動きだす
+        //    }
+        //}
 
         if (stoptime_flg == false)
         {
@@ -51,10 +51,10 @@ public class TimeScript : MonoBehaviour {
             Invoke("GoToGameOver", 3.0f);
         }
 
-        if ((/*Input.GetButtonDown("Fire3") ||*/ Input.GetKeyDown(KeyCode.K)))//キーボードのKキーを押すと時間を操れる
-        {
-            time = 5;
-        }
+        //if ((/*Input.GetButtonDown("Fire3") ||*/ Input.GetKeyDown(KeyCode.K)))//キーボードのKキーを押すと時間を操れる
+        //{
+        //    time = 5;
+        //}
 
         //マイナスは表示しない
         if (time < 0) time = 0;
