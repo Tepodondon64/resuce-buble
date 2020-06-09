@@ -11,7 +11,9 @@ public class inosisi : MonoBehaviour {
     private float currentTime = 0;
     //public Material material;
     public Transform _target;
-    private AttackMotion AM;
+    
+    private inosisi ino;
+    private EnemyStatus ES;
     private Animator animator;
 
     public float second;
@@ -33,10 +35,12 @@ public class inosisi : MonoBehaviour {
     void Start () {
         ttarget = GameObject.Find("Player").transform; ;
         StartCoroutine("tosin1");
-        AM = gameObject.GetComponent<AttackMotion>();
+        
         rb = GetComponent<Rigidbody>();
+        ino = GetComponent<inosisi>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();      //AudioのComponentの取得
+        ES = GetComponent<EnemyStatus>();
 
         tosinnn = true;
 
@@ -49,6 +53,15 @@ public class inosisi : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         Transform myTransform = this.transform;
+        if (ES.enemy_hp <= 0)
+        {
+            Debug.Log("aaa");
+            second = 0;
+            ino.enabled = false;
+            animator.SetBool("tossin", false);
+            this.tag = "Untagged";
+        }
+
     }
 
     IEnumerator tosin1()
@@ -60,9 +73,9 @@ public class inosisi : MonoBehaviour {
 
         Debug.Log("よお");
         ////プレイヤーの方を向く
-        //Vector3 target = _target.position;
-        //target.y = this.transform.position.y;
-        this.transform.LookAt(ttarget.transform);
+        Vector3 target = ttarget.position;
+        target.y = this.transform.position.y;
+        this.transform.LookAt(target);
 
         //AM.enabled = false;
 
@@ -73,8 +86,8 @@ public class inosisi : MonoBehaviour {
         animator.SetBool("tossin", false);
         yield return new WaitForSeconds(1);
         StartCoroutine("tosin2");
-
         
+
     }
 
     IEnumerator tosin2()
@@ -96,11 +109,20 @@ public class inosisi : MonoBehaviour {
 
             if(second < 0)
             {
+                animator.SetBool("tossin", false);
                 break;
             }
-                    //tosinnn = false;
+            if (ES.enemy_hp <= 0)
+            {
+                Debug.Log("aaa");
+                second = 0;
+                ino.enabled = false;
+                
+                //animator.SetBool("tossin", false);
+            }
+            //tosinnn = false;
         }
-
+        
         yield return new WaitForSeconds(1);
         StartCoroutine("tosin1");
     }

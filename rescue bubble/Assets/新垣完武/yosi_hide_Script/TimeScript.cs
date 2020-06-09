@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class TimeScript : MonoBehaviour {
 
-    private float time = 120;   //制限時間
+    public float time = 120;   //制限時間
     private bool stoptime_flg;//時間を止める
     private GameObject player;  //プレイヤーのオブジェクトを入れる変数。
 
