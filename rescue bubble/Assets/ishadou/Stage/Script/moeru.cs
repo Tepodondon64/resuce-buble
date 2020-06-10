@@ -10,6 +10,7 @@ public class moeru : MonoBehaviour {
     private int ObjectHP;
     private int FireHP = 5;
 
+    public AudioClip SyoukaSE;
 
     public GameObject Fire;
     private Vector3 scale;
@@ -67,6 +68,7 @@ public class moeru : MonoBehaviour {
                 {
                     Fire.SetActive(false);
                     this.gameObject.tag = "lost";
+                    AudioSource.PlayClipAtPoint(SyoukaSE, this.transform.position);
                 }
             }
             if (other.gameObject.tag == "ChargeBullet")
@@ -101,7 +103,7 @@ public class moeru : MonoBehaviour {
             {
                 GetComponent<CapsuleCollider>().enabled = false;
                 this.gameObject.tag = "Burn";
-                //GetComponent<Renderer>().material.color = Color.black;
+                gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 0);
                 Fire.SetActive(true);
             }
             this.StayEnemy = 0;

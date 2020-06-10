@@ -9,6 +9,9 @@ public class Enemy_Destroy : MonoBehaviour {
 
     EnemyStatus script; //スプリクトを入れる変数名
 
+    //効果音の設定
+    //AudioSource audioSource;         //オーディオを取得するための変数
+    public AudioClip EnemyDestroySE;       
 
     //エフェクト
     public Syouka syouka;
@@ -16,8 +19,9 @@ public class Enemy_Destroy : MonoBehaviour {
     private float BeforeDestroy2 = 1.0f;
     private float DestroyTime = 1.1f;
     private float currentTime = 0.0f;
-    bool BeforeDestroy =false;
-    bool EnemyDestroy = false;
+    bool BeforeDestroy =false;             //エネミーのHPが0になったか
+    bool EnemyDestroy = false;             
+    bool LastDestroy = false;
 
     //エネミーが目標サイズに達するまでの秒数
     [SerializeField] private float EnemyTime;
@@ -34,7 +38,7 @@ public class Enemy_Destroy : MonoBehaviour {
 
         //enemy = GameObject.Find("Enemy"); //
         script = GetComponent<EnemyStatus>();
-        
+        //audioSource = GetComponent<AudioSource>();          //AudioのComponentを取得
 
     }
 	
@@ -70,6 +74,11 @@ public class Enemy_Destroy : MonoBehaviour {
                 
                 Destroy(gameObject);
                 Instantiate(syouka, this.transform.position, Quaternion.identity);
+
+                //エネミーがやられた時に音を再生する
+                AudioSource.PlayClipAtPoint(EnemyDestroySE,this.transform.position);
+
+                //LastDestroy = true;
             }
         }
 

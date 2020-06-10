@@ -35,10 +35,10 @@ public class TransitionS03 : MonoBehaviour {
             //SceneManager.UnloadScene("Stage01");
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            SceneManager.LoadScene("Colosseum");
-        //    SceneManager.UnloadScene("Stage01");
-        }
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    SceneManager.LoadScene("Colosseum");
+        ////    SceneManager.UnloadScene("Stage01");
+        //}
     }
 }

@@ -26,7 +26,7 @@ public class Shooting2 : MonoBehaviour {
 
     //チャージに必要な時間
     public float charge_time = 30;
-    float Charge_Time;///パブリックのチャージに必要な時間をここに格納する(初期化用の変数)
+    public float Charge_Time;///パブリックのチャージに必要な時間をここに格納する(初期化用の変数)
     //チャージ中かどうか？
     bool charge_time_flg;//false:まだチャージ終わってないよ。  true:チャージ終了だよ。
 
@@ -126,6 +126,12 @@ public class Shooting2 : MonoBehaviour {
 
             bullet_Count = 0;
         }
+
+        if (charge_time <= 0)   //チャージタイムがマイナスになったら０にする
+        {
+            charge_time = 0;
+        }
+
 
         if (Stopflg == true)//チャージが中断される系の処理
         {

@@ -7,6 +7,9 @@ public class FBShot : MonoBehaviour {
     //プレイヤーオブジェクト
     GameObject Player;
 
+    private FBShot FBS;
+    private EnemyStatus es;
+
     public Transform _target;
     //弾のプレハブオブジェクト
     public GameObject FireBall;
@@ -28,11 +31,20 @@ public class FBShot : MonoBehaviour {
         Player = GameObject.Find("Player");                 //プレイヤーの情報を取得する
         animator = GetComponent<Animator>();                //RouのAnimatorにアクセスする
         audioSource = GetComponent<AudioSource>();          //AudioのComponentを取得
+        FBS = GetComponent<FBShot>();
+        es = GetComponent<EnemyStatus>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(es.enemy_hp <=0)
+        {
+            FBS.enabled = false;
+            animator.SetBool("Rou Attack", false);
+            this.tag = "Untagged";
+        }
+
         Vector3 target = _target.position;
         target.y = this.transform.position.y;
         this.transform.LookAt(target);
