@@ -12,12 +12,6 @@ EditorBuildSettings:
     path: Assets/ishadou/Stage/Scenes/Stage01.unity
     guid: efe59dbd70381da4aa33f071a8902a3f
   - enabled: 1
-    path: Assets/ishadou/Stage/Scenes/Stage02.unity
-    guid: 7cb96cfbd4df6f740b4910dd6b9c995d
-  - enabled: 1
-    path: Assets/ishadou/Stage/Scenes/Stage03.unity
-    guid: 05d034008a469a046b23e4996a30841e
-  - enabled: 1
     path: Assets/ishadou/Stage/Scenes/Colosseum.unity
     guid: adbac137b47e7c2448f8da7eab9180e2
   - enabled: 1
@@ -26,12 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/\u65B0\u57A3\u5B8C\u6B66/Scenes/GameOver.unity"
     guid: bf1bf688c8621a24cb324d5ba4c0b4b1
-  - enabled: 1
-    path: "Assets/\u65B0\u57A3\u5B8C\u6B66/Scenes/GameOver2.unity"
-    guid: 19ceb844e04060c49b919171e7f3544c
-  - enabled: 1
-    path: "Assets/\u65B0\u57A3\u5B8C\u6B66/Scenes/GameOver3.unity"
-    guid: e9e0b1cf0aaeb214d9d37c02bfeb4ea7
   - enabled: 1
     path: "Assets/\u65B0\u57A3\u5B8C\u6B66/Scenes/GameOverBoss.unity"
     guid: a2f842b2e1badc54193e8b907c2ecba6

@@ -47,7 +47,7 @@ public class NewCreateManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         target = GameObject.Find("Player").transform;
-        StartCoroutine("ChangeColor1");
+        StartCoroutine("ChangeColor2");
 
     }
 
@@ -184,7 +184,7 @@ public class NewCreateManager : MonoBehaviour
         //_currentCharNum = 3;
         //Movement(_currentCharNum);
 
-        _currentCharNum = 0;
+        _currentCharNum = 1;
         Movement(_currentCharNum);
 
         yield return new WaitForSeconds(5);
@@ -250,7 +250,7 @@ public class NewCreateManager : MonoBehaviour
     //火災旋風
     IEnumerator ChangeColor3()
     {
-        _currentCharNum = 1;
+        _currentCharNum = 0;
         Movement(_currentCharNum);
 
         Debug.Log("よくここまで来たね");

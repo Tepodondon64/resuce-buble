@@ -11,7 +11,7 @@ public class clear : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("joystick button 1"))
+        if (Input.GetKeyDown("joystick button 1") || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
             SceneManager.LoadScene("Title");
         }
