@@ -31,7 +31,8 @@ public class TransitionS01 : MonoBehaviour {
 
         if (NextStage == 1)
         {
-            SceneManager.LoadScene("Stage02");
+           // SceneManager.LoadScene("Stage02");
+            SceneManager.LoadScene("Colosseum");//1ステージからいきなりラスボスステージに行くよ。
             //SceneManager.UnloadScene("Stage01");
         }
 
