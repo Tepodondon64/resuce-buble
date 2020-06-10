@@ -14,6 +14,7 @@ public class moerubar : MonoBehaviour {
 
 
     public GameObject Fire;
+    public GameObject Smoke;
     private Vector3 scale;
     private float AfterX, AfterY, AfterZ;
 
@@ -31,6 +32,11 @@ public class moerubar : MonoBehaviour {
         if (this.gameObject.CompareTag("Hard"))
         {
             ObjectHP = 300;
+        }
+        if (this.gameObject.CompareTag("Burn"))
+        {
+            ObjectHP = 0;
+            this.StayEnemy = 1;
         }
         scale.x = Fire.transform.localScale.x;
         scale.y = Fire.transform.localScale.y;
@@ -77,7 +83,8 @@ public class moerubar : MonoBehaviour {
             if (other.gameObject.tag == "ChargeBullet")
             {
                 FireHP -= 10;
-                Fire.SetActive(false);
+                Destroy(Fire);
+                //Fire.SetActive(false);
                 this.gameObject.tag = "lost";
             }
         }
@@ -101,6 +108,7 @@ public class moerubar : MonoBehaviour {
                     Timer = 0.0f;
                     this.ObjectHP -= 60;
                     Debug.Log(ObjectHP);
+                    Smoke.SetActive(true);
                 }
             }
             else
