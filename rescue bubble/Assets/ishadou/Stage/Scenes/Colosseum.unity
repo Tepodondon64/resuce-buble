@@ -651,7 +651,13 @@ Prefab:
       propertyPath: enemy_hp
       value: 5000
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 82413220924662580, guid: d85e016f42a0ce24686b31e375f15861,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 95303052457444474, guid: d85e016f42a0ce24686b31e375f15861, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d85e016f42a0ce24686b31e375f15861, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &543271164
@@ -1650,6 +1656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1303830590}
   - component: {fileID: 1303830589}
+  - component: {fileID: 1303830591}
   m_Layer: 0
   m_Name: BGM
   m_TagString: Untagged
@@ -1765,6 +1772,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303830591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1303830588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4750f7dd90b4943a607378957aedb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1309908931
 Prefab:
   m_ObjectHideFlags: 0

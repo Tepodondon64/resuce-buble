@@ -29,7 +29,7 @@ public class EnemyStatus : MonoBehaviour, hidame//←hidameの解説は↓
             if (Desflg == true)
             {
                 Destroy(gameObject);
-                SceneManager.LoadScene("gameclear");
+                //SceneManager.LoadScene("gameclear");
             }
             //Destroy(gameObject);
         }
