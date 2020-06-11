@@ -47,7 +47,7 @@ public class NewCreateManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         target = GameObject.Find("Player").transform;
-        StartCoroutine("ChangeColor2");
+        StartCoroutine("ChangeColor1");
 
     }
 

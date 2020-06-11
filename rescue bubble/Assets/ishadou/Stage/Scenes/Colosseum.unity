@@ -1005,7 +1005,7 @@ Prefab:
     - target: {fileID: 114475907410541914, guid: d85e016f42a0ce24686b31e375f15861,
         type: 2}
       propertyPath: enemy_hp
-      value: 1000
+      value: 5000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d85e016f42a0ce24686b31e375f15861, type: 2}
