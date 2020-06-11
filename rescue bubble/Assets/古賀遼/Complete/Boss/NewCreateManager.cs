@@ -8,7 +8,7 @@ public class NewCreateManager : MonoBehaviour
     GameObject[] characters;
     GameObject currentChar;
     Animator MSN;
-    int _currentCharNum = 2;
+    int _currentCharNum = 1;
 
 
     public Transform target;
@@ -104,7 +104,7 @@ public class NewCreateManager : MonoBehaviour
 
         audioSource.PlayOneShot(furikaburu);
 
-        _currentCharNum = 1;
+        _currentCharNum = 0;
         Movement(_currentCharNum);
         //_currentCharNum = 2;
         //Movement(_currentCharNum);
@@ -184,7 +184,7 @@ public class NewCreateManager : MonoBehaviour
         //_currentCharNum = 3;
         //Movement(_currentCharNum);
 
-        _currentCharNum = 0;
+        _currentCharNum = 2;
         Movement(_currentCharNum);
 
         yield return new WaitForSeconds(5);
