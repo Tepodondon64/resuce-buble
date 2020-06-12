@@ -76,7 +76,7 @@ public class ChargeBullet_Destroy : MonoBehaviour {
         if (yodame_kakunin != null)//当たった相手のGetComponent情報の<hidame>が使われているならnullじゃない
         //つまりこの攻撃を食らうことができるオブジェクトである
         {
-            yodame_kakunin.hidame_01(60);//()の中身はダメージ数を記入する
+            yodame_kakunin.hidame_01(30);//()の中身はダメージ数を記入する
         }
     }
 }
