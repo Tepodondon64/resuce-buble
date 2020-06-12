@@ -8,7 +8,7 @@ public class NewCreateManager : MonoBehaviour
     GameObject[] characters;
     GameObject currentChar;
     Animator MSN;
-    int _currentCharNum = 1;
+    int _currentCharNum = 3;
 
 
     public Transform target;
@@ -104,7 +104,7 @@ public class NewCreateManager : MonoBehaviour
 
         audioSource.PlayOneShot(furikaburu);
 
-        _currentCharNum = 0;
+        _currentCharNum = 2;
         Movement(_currentCharNum);
         //_currentCharNum = 2;
         //Movement(_currentCharNum);
@@ -184,7 +184,7 @@ public class NewCreateManager : MonoBehaviour
         //_currentCharNum = 3;
         //Movement(_currentCharNum);
 
-        _currentCharNum = 2;
+        _currentCharNum = 0;
         Movement(_currentCharNum);
 
         yield return new WaitForSeconds(5);
@@ -250,7 +250,7 @@ public class NewCreateManager : MonoBehaviour
     //火災旋風
     IEnumerator ChangeColor3()
     {
-        _currentCharNum = 3;
+        _currentCharNum = 1;
         Movement(_currentCharNum);
 
         Debug.Log("よくここまで来たね");

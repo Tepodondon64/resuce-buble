@@ -1203,6 +1203,16 @@ Prefab:
       propertyPath: BossStage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114443747365184716, guid: 25b98ee21ee63564eafbe54d3f7f3d68,
+        type: 2}
+      propertyPath: speedX
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114443747365184716, guid: 25b98ee21ee63564eafbe54d3f7f3d68,
+        type: 2}
+      propertyPath: speedZ
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25b98ee21ee63564eafbe54d3f7f3d68, type: 2}
   m_IsPrefabParent: 0
