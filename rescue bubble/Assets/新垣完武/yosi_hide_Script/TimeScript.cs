@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class TimeScript : MonoBehaviour {
 
+    private float stoptime = 120;      //これが0になったら動く
+
     public float time = 120;   //制限時間
+
     private bool stoptime_flg;//時間を止める
     private GameObject player;  //プレイヤーのオブジェクトを入れる変数。
 
@@ -23,10 +26,12 @@ public class TimeScript : MonoBehaviour {
         player = GameObject.Find("Player");//プレイヤーの情報を取得する
         //外部のスクリプトの情報を取得
         playerHP_2 = player.GetComponent<PlayerHP_2>();//PlayerHP_2スクリプトの取得
-        timeEndflg = false; 
+        timeEndflg = false;
+        stoptime_flg = true;
 	}
 	
 	void Update () {
+
         //if ((/*Input.GetButtonDown("Fire3") ||*/ Input.GetKeyDown(KeyCode.T)))//キーボードのTキーを押すと時間を操れる
         //{ 
 
@@ -39,6 +44,14 @@ public class TimeScript : MonoBehaviour {
         //        stoptime_flg = false;//時間が動きだす
         //    }
         //}
+
+        if(--stoptime < 0)
+        {
+            stoptime_flg = false;
+        }
+
+
+
 
         if (stoptime_flg == false)
         {
